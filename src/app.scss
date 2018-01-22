@@ -1,0 +1,97 @@
+// ## APP                                           IMPORTS
+// ########################################################
+
+@import "src/styles/normalize/_normalize.scss";
+@import "src/styles/variables/_colors.scss";
+@import "src/styles/variables/_sizes.scss";
+@import "src/styles/mixins/_mixins.scss";
+@import "src/styles/common/animate.scss";
+@import "src/styles/common/common.scss";
+@import "src/styles/common/errors.scss";
+@import "src/styles/common/forms.scss";
+@import "src/styles/register/register.scss";
+@import "src/styles/signin/signin.scss";
+@import "src/styles/nav/nav.scss";
+@import "src/styles/dashboard/dashboard.scss";
+@import "src/styles/profile/profile.scss";
+@import "src/styles/crud/list.scss";
+@import "src/styles/crud/create.scss";
+@import "src/styles/crud/reacttable.scss";
+@import "src/styles/crud/reacttags.scss";
+@import "src/styles/crud/view.scss";
+@import "src/styles/crud/edit.scss";
+//@import "src/styles/test/test";
+
+// ## APP                                       BASE LAYOUT
+// ########################################################
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html,
+body {
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  background-color: $adam-app-bg;
+  width: 100%;
+}
+
+button {
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+}
+
+// ## APP                                       PAGE LAYOUT
+// ########################################################
+
+.page_container {
+  @include flex(column);
+  align-items: center;
+  margin-top: $nav-height;
+  padding-right: $lg;
+  padding-left: $lg;
+  flex: 1;
+  min-height: calc(100vh - 22.4rem);
+}
+
+// ## APP                                     FOOTER LAYOUT
+// ########################################################
+
+#footer {
+  padding-top: $nav-height;
+  flex: 0;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: $xs solid $adam-red;
+  text-align: center;
+  color: $adam-sub-heading;
+  user-select: none;
+}
+
+#footer_filler {
+  flex: 1;
+}
+
+#footer_text {
+  @include flex(column);
+  flex: 1;
+  font-size: $font-xl;
+  line-height: $font-heading;
+}
+
+#footer_text-version {
+  font-weight: $fw-heading;
+}
+
+#footer_text-brand {
+  font-weight: $fw-md;
+  padding-bottom: $md;
+}
