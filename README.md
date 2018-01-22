@@ -42,3 +42,12 @@ $ yarn start
 4. Define Redux data flow as needed, reducers are combined in `./src/store/index.js`
 5. Define GraphQL Queries & Mutations as needed
 6. Define validator.js validations for Redux-Form if there is any data input.
+
+## Contact
+
+### Email
+adam@adammackintosh.net
+
+### GitHub
+
+I tried to make this portfolio as user-friendly and developer-friendly as possible, but if anything is unclear, please submit any questions as issues on GitHub: https://github.com/agm1984/adammackintosh-dot-net-webapp/issues
