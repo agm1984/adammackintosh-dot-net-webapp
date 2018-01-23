@@ -32,6 +32,11 @@ $ yarn install
 $ yarn start
 ```
 
+## Environment Config
+The App contains an example environment config which facilitates Apollo Client configuration and CORS.
+
+Simply rename the file from `./src/env/config.example.js` to `./src/env/config.js` and change the database credentials.
+
 ## How to Add a New Feature
 > This project generally follows the Component-as-a-Folder Architecture Pattern. This is the most scalable approach that also minimizes potential for file collisions in multi-developer environments.
 
