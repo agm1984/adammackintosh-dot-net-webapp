@@ -17,10 +17,20 @@ class PersonViewContainer extends Component {
       serverErrors: [],
     }
   }
+
+  /**
+   * When the Component mounts, the Person should be retrieved from the server.
+   */
   async componentDidMount() {
     window.scrollTo(0, 0)
     return this.getPerson(this.props.match.params.person_serialNumber)
   }
+
+  /**
+   * When the Person's details are retrieved, they are stored in the local
+   * Component's state
+   * @param {String} person_serialNumber Person's unique identifier (Serial)
+   */
   async getPerson(person_serialNumber) {
     try {
       const res = await this.props.client.query({
@@ -33,6 +43,10 @@ class PersonViewContainer extends Component {
       return this.setState({ serverErrors: ['Problem getting person record.'] })
     }
   }
+
+  /**
+   * When the Edit Button is pressed, the user should be navigated to the Edit Person View
+   */
   handleEdit() {
     return this.props.dispatch(push(`/admin/people/edit/${this.props.match.params.person_serialNumber}`))
   }

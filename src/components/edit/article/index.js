@@ -130,7 +130,7 @@ ArticleEditContainer.propTypes = {
 /**
  * The currently signed in Person's Serial Number is used to set the Editor
  * of the Article.
- * @param {Object} state The entire Redux State Tree
+ * @param {Object} state Redux State Tree
  */
 const mapStateToProps = (state) => {
   const { person_serialNumber } = state.editArticle
@@ -138,6 +138,7 @@ const mapStateToProps = (state) => {
     person_serialNumber,
   }
 }
+
 export default compose(
   connect(mapStateToProps, {
     handleGetEditor, handleEditRedirect, handleGoBack,

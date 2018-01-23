@@ -3,7 +3,6 @@
  * @param {*} ts Unix timestamp in milliseconds
  */
 const formatTime = (ts) => {
-  console.log('WTF', ts)
   const rawDate = new Date(ts).toISOString().split('T')
   const date = `${rawDate[0]}`
   const rawTime = rawDate[1].split(':')

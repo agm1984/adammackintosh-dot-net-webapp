@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withApollo } from 'react-apollo'
 import GET_ME_QUERY from './profile_queries'
 import formatTime from './utils'
+import noPhoto from './images/noPhoto.png'
 
 class Profile extends Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class Profile extends Component {
             <div id="profile_pic-container">
               <img
                 id="profile_pic"
-                src={person_avatar}
+                src={(!person_avatar) ? noPhoto : person_avatar}
                 alt="Avatar"
               />
             </div>

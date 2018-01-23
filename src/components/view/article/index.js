@@ -18,10 +18,19 @@ class ArticleViewContainer extends Component {
       serverErrors: [],
     }
   }
+
+  /**
+   * When the Component mounts, the Article should be retrieved from the server.
+   */
   async componentDidMount() {
     window.scrollTo(0, 0)
     return this.getArticle(this.props.match.params.article_slug)
   }
+  /**
+   * When the Article's details are retrieved, they are stored in the local
+   * Component's state
+   * @param {String} article_slug Article's unique identifier (Slug)
+   */
   async getArticle(article_slug) {
     try {
       const res = await this.props.client.query({
@@ -34,9 +43,14 @@ class ArticleViewContainer extends Component {
       return this.setState({ serverErrors: ['Problem getting article record.'] })
     }
   }
+
+  /**
+   * When the Edit Button is pressed, the user should be navigated to the Edit Article View
+   */
   handleEdit() {
     return this.props.dispatch(push(`/admin/articles/edit/${this.props.match.params.article_slug}`))
   }
+
   render() {
     if (!Object.keys(this.state.record).length) {
       return <GetView />
@@ -51,7 +65,6 @@ class ArticleViewContainer extends Component {
       article_tags,
     } = this.state.record
     const {
-      person_avatar,
       person_givenName,
       person_familyName,
       person_email,
@@ -69,24 +82,23 @@ class ArticleViewContainer extends Component {
         />
         <GetErrors errors={this.state.serverErrors} />
         <GetSection isTop heading="DETAILS">
+          <GetField name="Status" value={article_status} />
           <GetField name="Title" value={article_title || ''} />
           <GetField name="Slug" value={article_slug || ''} />
           <GetField name="Created" value={formatTime(article_created) || ''} />
-        </GetSection>
-        <GetSection heading="AUTHOR">
-          <GetField name="Avatar URL" value={person_avatar} />
-          <GetField name="First Name" value={person_givenName} />
-          <GetField name="Last Name" value={person_familyName} />
-          <GetEmail name="Email" value={person_email} />
-          <GetField name="Location" value={person_location} />
-          <GetField name="Joined" value={formatTime(person_created)} />
-          <GetField name="Status" value={person_status} />
         </GetSection>
         <GetSection heading="TAGS">
           <GetField value={article_tags.map(tag => tag.tag_name).sort().join(', ') || ''} />
         </GetSection>
         <GetSection heading="CONTENT">
           <GetQuill content={article_content} />
+        </GetSection>
+        <GetSection heading="AUTHOR">
+          <GetField name="Name" value={`${person_givenName} ${person_familyName}`} />
+          <GetEmail name="Email" value={person_email} />
+          <GetField name="Location" value={person_location} />
+          <GetField name="Joined" value={formatTime(person_created)} />
+          <GetField name="Status" value={person_status} />
         </GetSection>
         <GetBackLink onLinkPress={() => this.props.dispatch(goBack())} />
       </GetView>

@@ -17,7 +17,7 @@ const ArticleEditForm = (props) => {
       onSubmit={handleSubmit(onEditSubmit)}
       autoComplete="off"
     >
-      <UpdateSection isTop heading="MEMBERSHIP">
+      <UpdateSection isTop heading="EDIT">
         <Field
           label="Title"
           component={UpdateInput}

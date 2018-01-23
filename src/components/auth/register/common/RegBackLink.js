@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * When Back is pressed, the user should be navigated back to the Sign In View.
+ * @param {*} props The Component's props
+ */
 const RegBackLink = (props) => {
   const { onBack } = props
   return (

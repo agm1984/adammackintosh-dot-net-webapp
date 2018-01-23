@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export default gql`
+const GET_ARTICLES_QUERY = gql`
   query getAllArticles {
     getAllArticles {
       article_status
@@ -17,3 +17,5 @@ export default gql`
     }
   }
 `
+
+export default GET_ARTICLES_QUERY

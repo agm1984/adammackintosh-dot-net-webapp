@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * This utility function is executed on keypress and tests a password string for
+ * its security quality, on a gradient of 0 to 12. A higher score is better.
+ * @param {*} p Password to test
+ */
 const testPassword = (p) => {
   const hasSpecial = /[^a-zA-Z0-9]/.test(p)
   const hasNumber = /[0-9]/.test(p)
@@ -39,10 +44,14 @@ const testPassword = (p) => {
   return null
 }
 
+/**
+ * The Password Quality Component displays the quality-check result directly above
+ * the Text Input Component that specifies it.
+ * @param {*} props The Component's props
+ */
 const PasswordQuality = (props) => {
   const { test } = props
   if (!test) return null
-
   const score = testPassword(test)
   const quality = {
     0: { label: 'Too short', color: '#FF0000' },

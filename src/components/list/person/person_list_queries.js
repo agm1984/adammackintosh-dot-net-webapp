@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export default gql`
+const GET_PEOPLE_QUERY = gql`
   query getAllPeople {
     getAllPeople {
       person_status,
@@ -20,3 +20,5 @@ export default gql`
     }
   }
 `
+
+export default GET_PEOPLE_QUERY
