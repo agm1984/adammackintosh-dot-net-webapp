@@ -50,6 +50,7 @@ class PersonViewContainer extends Component {
   handleEdit() {
     return this.props.dispatch(push(`/admin/people/edit/${this.props.match.params.person_serialNumber}`))
   }
+
   render() {
     if (!Object.keys(this.state.record).length) {
       return <GetView />

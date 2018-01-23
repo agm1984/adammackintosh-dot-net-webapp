@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88386998-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'UA-88386998-1');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="description" content="Specialized in functional programming and lean agile approaches to business development, Adam Mackintosh is a web and mobile software developer from Nanaimo, BC, Canada ... Check out his portfolio and contact him.">
+    <meta property="og:image" content="http://adammackintosh.net/assets/img/adammackintosh-avatar.png">
+    <meta property="og:title" content="Adam Mackintosh's Portfolio">
+    <meta property="og:url" content="http://adammackintosh.net">
+    <meta property="og:site_name" content="adammackintosh.net">
+    <meta property="og:description" content="Specialized in functional programming and lean agile approaches to business development, Adam Mackintosh is a web and mobile software developer from Nanaimo, BC, Canada ... Check out his portfolio and contact him.">
+    <meta property="og:type" content="Website">
+    <meta property="og:determiner" content="the">
+    <meta property="og:locale" content="en_US">
+    <meta property="fb:app_id" content="1160271080719333">
+    <meta property="fb:admins" content="568188506708923">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@agm1984">
+    <meta name="twitter:creator" content="@agm1984">
+    <meta name="twitter:title" content="Adam Mackintosh's Portfolio">
+    <meta name="twitter:description" content="With over 15 years experience, Adam is a web and mobile software developer specialized in node.js and React.">
+    <meta name="twitter:image" content="http://adammackintosh.net/assets/img/adammackintosh-avatar.png">
+    <meta name="twitter:image:alt" content="Adam Mackintosh">
+    <meta itemprop="name" content="Adam Mackintosh's Portfolio">
+    <meta itemprop="description" content="Specialized in functional programming and lean agile approaches to business development, Adam Mackintosh is a web and mobile software developer from Nanaimo, BC, Canada ... Check out his portfolio and contact him to stay ahead of your competition.">
+    <meta itemprop="image" url="http://adammackintosh.net/assets/img/adammackintosh-avatar.png">
+    <meta itemprop="author" content="Adam Mackintosh">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "Adam Mackintosh",
+        "sameAs" : [
+          "http://facebook.com/adam.mackintosh.10",
+          "http://twitter.com/agm1984",
+          "http://www.linkedin.com/in/adam-mackintosh-1540b874",
+          "http://plus.google.com/117555201884507577904",
+          "http://github.com/agm1984",
+          "http://dribbble.com/agm1984",
+          "http://instagram.com/agm1984",
+          "http://www.youtube.com/user/adamgm84",
+          "http://bodyspace.bodybuilding.com/agm1984/",
+          "http://codepen.io/agm1984/",
+          "http://stackoverflow.com/users/6141025/agm1984"
+        ],
+        "jobTitle": "Software Engineer",
+        "birthDate": "1984-08-14",
+        "birthPlace": "Nanaimo, BC",
+        "nationality": "Canadian",
+        "additionalName": "agm1984",
+        "url": "http://adammackintosh.net",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nanaimo",
+          "addressRegion": "British Columbia"
+        }
+      }
+    </script>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <title>Adam Mackintosh Portfolio</title>
-    <!-- <script src="https://use.typekit.net/vhs4ulo.js"></script>
-    <script src="https://use.fortawesome.com/93791dd7.js"></script>
-
-    <script>
-      try {
-        Typekit.load({ async: true });
-      } catch (e) { }
-    </script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALtU9hh7leZcwk0sjAmSoshc80UEZyLBo&libraries=places"></script>
   </head>
   <body>
@@ -36,24 +78,14 @@
       You need JavaScript.
     </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
     <script>
-      'use strict'
-      const c1 = 'color:#1B85B8'
-      const c2 = 'color:#826F8B'
-      const c3 = 'color:#559E83'
-      const c4 = 'color:#AE5A41'
-      const c5 = 'color:#929292'
-      const c6 = 'color:#F25C05'
+      'use strict';
+      const c1 = 'color:#1B85B8';
+      const c2 = 'color:#826F8B';
+      const c3 = 'color:#559E83';
+      const c4 = 'color:#AE5A41';
+      const c5 = 'color:#929292';
+      const c6 = 'color:#F25C05';
       console.log(
         "\n" +
         "\r\n%c      db%c      `7MM^^^Yb.%c      db%c      `7MMM.     ,MMF'" +
@@ -78,7 +110,7 @@
         c1, c2, c3, c4,
         c5,
         c6
-      )
+      );
     </script>
   </body>
 </html>

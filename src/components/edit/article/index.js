@@ -21,6 +21,7 @@ class ArticleEditContainer extends Component {
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
     this.articlePlainText = ''
   }
+
   /**
    * When the Edit View loads, the Article's and Editor's data should be retrieved.
    */
@@ -29,6 +30,7 @@ class ArticleEditContainer extends Component {
     this.getArticle(this.props.match.params.article_slug)
     return this.props.handleGetEditor()
   }
+
   /**
    * This method gets the Article data and puts it into the Component's state.
    * @param {String} article_slug Look-up Slug for the Article
@@ -45,6 +47,7 @@ class ArticleEditContainer extends Component {
       return this.setState({ serverErrors: ['Problem getting article record.'] })
     }
   }
+
   /**
    * When the form is submitted, the current values should be compared with their
    * prior values, and only values that were changed should be sent to the server.
@@ -84,6 +87,7 @@ class ArticleEditContainer extends Component {
       })
     }
   }
+
   render() {
     if (!Object.keys(this.state.record).length) {
       return <UpdateView />
