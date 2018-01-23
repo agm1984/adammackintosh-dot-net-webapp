@@ -17,7 +17,8 @@ import NotFoundPage from './404'
 import Footer from './Footer'
 
 /**
- * The Admin App Component is responsible for rendering all admin CRUD functionality.
+ * The Admin App Component is responsible for rendering admin CRUD functionality
+ * that is only available to signed in users.
  */
 const AdminApp = () => ([
   <Nav key="NavBar" />,

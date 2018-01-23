@@ -1,5 +1,5 @@
 # adammackintosh.net - Front-end Client
-<img src="http://96.54.162.231/adam-logo.png">
+<img src="http://adammackintosh.net/adam-logo.png">
 
 > Adam Mackintosh's Portfolio API. Feel free to inspect.
 

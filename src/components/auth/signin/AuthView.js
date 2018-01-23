@@ -5,7 +5,7 @@ import { graphql, compose } from 'react-apollo'
 import AuthForm from './AuthForm'
 import AuthRegisterLink from './AuthRegisterLink'
 import Footer from '../../Footer'
-import handleSignInSuccess from './auth_actions'
+import { handleSignInSuccess } from './auth_actions'
 import SIGN_IN_MUTATION from './auth_mutations'
 
 class SignInView extends Component {
@@ -16,21 +16,29 @@ class SignInView extends Component {
     }
     this.handleLoginAttempt = this.handleLoginAttempt.bind(this)
   }
+
   componentDidMount() {
     window.scrollTo(0, 0)
   }
-  async handleLoginAttempt({ person_email, person_password }) {
+
+  /**
+   * When the user presses the Sign In Button, their credentials are passed
+   * to the server and a JWT Token is awarded if the credentials are valid.
+   * @param {Object} props Sign In Form submitted fields
+   */
+  async handleLoginAttempt(props) {
+    const { person_email, person_password } = props
     try {
       const res = await this.props.mutate({
         variables: { person_email, person_password },
       })
       const token = res.data.login
-      console.log('TOKEN', token)
       return this.props.handleSignInSuccess(token)
     } catch (e) {
       return this.setState({ serverErrors: [e.graphQLErrors[0].message] })
     }
   }
+
   render() {
     return (
       <div id="auth_wrapper">

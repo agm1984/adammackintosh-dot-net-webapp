@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import Draggable from 'react-draggable'
 import './Window.css'
 
@@ -9,6 +10,7 @@ class Window extends Component {
     super(props)
     this.handleWindowClick = this.handleWindowClick.bind(this)
   }
+
   /**
    * When a Window is mounted, an event listener should be added to detect if
    * the user is attempting to bring the Window back to the foreground.
@@ -16,6 +18,7 @@ class Window extends Component {
   componentDidMount() {
     return document.addEventListener('click', this.handleWindowClick, true)
   }
+
   /**
    * For memory management reasons, the event listener is removed when
    * the Window unmounts.
@@ -23,6 +26,7 @@ class Window extends Component {
   componentWillUnmount() {
     return document.removeEventListener('click', this.handleWindowClick, true)
   }
+
   /**
    * This function runs every time the user clicks inside or outside the Window.
    * The Window should be brought to the foreground if the click is registered
@@ -32,19 +36,23 @@ class Window extends Component {
    * @param {Synthetic Event} event React-controlled Synthetic Event
    */
   handleWindowClick(event) {
-    if (this.props.state === 'maximized') {
+    const {
+      state, onActiveProgramChange, id, previousState,
+    } = this.props
+    if (state === 'maximized') {
       const isMaximized = true
-      return this.props.onActiveProgramChange(this.props.id, isMaximized)
+      return onActiveProgramChange(id, isMaximized)
     }
-    if (this.props.previousState === 'maximized') {
+    if (previousState === 'maximized') {
       return null
     }
-    const domNode = ReactDOM.findDOMNode(this)
+    const domNode = ReactDOM.findDOMNode(this) // eslint-disable-line
     if (!domNode || !domNode.contains(event.target)) {
       return null
     }
-    return this.props.onActiveProgramChange(this.props.id)
+    return onActiveProgramChange(id)
   }
+
   /**
    * When a Window is maximized, it should be full viewport width and height,
    * minus the height of the Taskbar.
@@ -108,6 +116,7 @@ class Window extends Component {
       </div>
     )
   }
+
   /**
    * When a Window is in its initial state, its size is controlled via the dimensions prop
    * which is determined by the Window's configuration in the Desktop State.
@@ -166,6 +175,7 @@ class Window extends Component {
       </Draggable>
     )
   }
+
   render() {
     switch (this.props.state) {
       case 'minimized': {
@@ -180,6 +190,25 @@ class Window extends Component {
       }
     }
   }
+}
+
+Window.defaultProps = {
+  previousState: undefined,
+  activeProgram: undefined,
+}
+Window.propTypes = {
+  state: PropTypes.string.isRequired,
+  onActiveProgramChange: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  previousState: PropTypes.string,
+  dimensions: PropTypes.objectOf(PropTypes.any).isRequired,
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.func.isRequired,
+  activeProgram: PropTypes.string,
+  onMinimize: PropTypes.func.isRequired,
+  onMaximize: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default Window

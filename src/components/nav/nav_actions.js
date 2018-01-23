@@ -1,6 +1,7 @@
 import { NAV_GET_AVATAR, NAV_GET_AVATAR_FAIL } from './nav_types'
 import client from '../apolloClient'
 import GET_ME_QUERY from './nav_queries'
+import noPhoto from './images/noPhoto.png'
 
 /**
  * This Action Creator gets the currently signed in user's profile picture
@@ -14,6 +15,13 @@ const handleGetPersonAvatar = () => async (dispatch) => {
       query: GET_ME_QUERY,
     })
     const { me } = res.data
+    console.log('ME', me)
+    if (!me.person_avatar) {
+      return dispatch({
+        type: NAV_GET_AVATAR,
+        payload: noPhoto,
+      })
+    }
     return dispatch({
       type: NAV_GET_AVATAR,
       payload: me.person_avatar,
@@ -21,6 +29,7 @@ const handleGetPersonAvatar = () => async (dispatch) => {
   } catch (e) {
     return dispatch({
       type: NAV_GET_AVATAR_FAIL,
+      payload: noPhoto,
     })
   }
 }

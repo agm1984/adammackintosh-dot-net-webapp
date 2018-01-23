@@ -64,6 +64,7 @@ class AdamResume extends Component {
     const today = new Date()
     this.date = `${getConciseMonth(today.getMonth())} ${today.getDate()}`
   }
+
   render() {
     return (
       <div id="ar_wrapper">
@@ -82,7 +83,6 @@ class AdamResume extends Component {
           <div className="ar_menu-button">T<u>a</u>ble</div>
           <div className="ar_menu-button"><u>W</u>indow</div>
           <div className="ar_menu-button"><u>H</u>elp</div>
-          <div className="ar_menu-button"></div>
         </div>
         <div className="ar_menu">
           <img
@@ -121,7 +121,7 @@ class AdamResume extends Component {
             </div>
             <div id="topRightAccent">
               <a
-                href="http://96.54.162.231/Adam-Resume-Jan-2018.docx"
+                href="http://adammackintosh.net/Adam-Resume-Jan-2018.docx"
                 download="Adam-Mackintosh-Resume-Jan-2018.docx"
               >
                 Download

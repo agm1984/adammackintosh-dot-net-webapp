@@ -21,6 +21,9 @@ class AdamHobbies extends Component {
       shouldTooltipDisplay: false,
     }
   }
+  /**
+   * For arbitrary reasons, a tooltip exists for the Adam Navigator Icon.
+   */
   toggleBonusTooltip() {
     this.setState({ shouldTooltipDisplay: !this.state.shouldTooltipDisplay })
   }
@@ -37,7 +40,6 @@ class AdamHobbies extends Component {
           <div className="ah_menu-button">T<u>a</u>ble</div>
           <div className="ah_menu-button"><u>W</u>indow</div>
           <div className="ah_menu-button"><u>H</u>elp</div>
-          <div className="ah_menu-button"></div>
         </div>
         <div id="ah_menuMain-wrapper">
           <img
@@ -55,7 +57,7 @@ class AdamHobbies extends Component {
                   alt=""
                 />
                 {item.label}
-            </div>
+              </div>
             ))}
           </div>
           <div id="ah_menu-endLogo">
@@ -65,6 +67,8 @@ class AdamHobbies extends Component {
               alt=""
               onMouseOver={() => this.toggleBonusTooltip()}
               onMouseOut={() => this.toggleBonusTooltip()}
+              onFocus={() => this.toggleBonusTooltip()}
+              onBlur={() => this.toggleBonusTooltip()}
             />
           </div>
         </div>

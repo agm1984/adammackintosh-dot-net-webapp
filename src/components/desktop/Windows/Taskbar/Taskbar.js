@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import StartButton from './StartButton'
 import StartMenu from './StartMenu'
 import { calcHours, calcMinutes, calcAMPM } from './utils'
@@ -12,31 +13,32 @@ class Taskbar extends Component {
       currentTime: '',
       mobileMode: false,
     }
-    setInterval(() => {
-      const time = new Date()
-      const hours = time.getHours()
-      const minutes = time.getMinutes()
-      return this.setState({
-        currentTime: `${calcHours(hours)}:${calcMinutes(minutes)}${calcAMPM(hours)}`
-      })
-    }, 1000)
+    this.startClock = this.startClock.bind(this)
+    this.stopClock = this.stopClock.bind(this)
   }
+
   /**
-   * When the Taskbar Component initially loads, the current time is loaded into the
-   * System Tray in the bottom-right corner.
+   * If dimensions are below threshold, Mobile Mode should be toggled which
+   * affects various attributes of the Taskbar.
    */
-  componentDidMount() {
+  componentWillMount() {
     const windowWidth = document.getElementById('root').offsetWidth
     if (windowWidth < 620) {
       return this.setState({ mobileMode: true })
     }
-    const time = new Date()
-    const hours = time.getHours()
-    const minutes = time.getMinutes()
-    return this.setState({
-      currentTime: `${calcHours(hours)}:${calcMinutes(minutes)}${calcAMPM(hours)}`
-    })
+    return null
   }
+
+  /**
+   * When the Taskbar Component initially loads, the current time is loaded into the
+   * System Tray in the bottom-right corner. `this._isMounted` is tracked for
+   * the Clock.
+   */
+  componentDidMount() {
+    this._isMounted = true
+    this.startClock()
+  }
+
   /**
    * The Taskbar is at risk for re-rendering every 1000ms due to clock updates.
    * For this reason, shouldComponentUpdate is used. An additional shallow-equality
@@ -57,6 +59,31 @@ class Taskbar extends Component {
     }
     return true
   }
+
+  /**
+   * When the Component unmounts, the Clock should stop updating.
+   */
+  componentWillUnmount() {
+    this._isMounted = false
+  }
+
+  /**
+   * On a 1000ms interval, the System Tray Clock should update.
+   */
+  setClock = () => {
+    if (this._isMounted) {
+      const time = new Date()
+      const hours = time.getHours()
+      const minutes = time.getMinutes()
+      return this.setState({
+        currentTime: `${calcHours(hours)}:${calcMinutes(minutes)}${calcAMPM(hours)}`,
+      })
+    }
+    return null
+  }
+  startClock = () => setInterval(this.setClock, 1000)
+  stopClock = () => clearInterval(this.setClock)
+
   /**
    * When the Start Button is pressed, the Start Menu will appear and allow
    * the user to select a program to open from a list of options.
@@ -64,6 +91,7 @@ class Taskbar extends Component {
   toggleMenu() {
     return this.setState({ isMenuOpen: !this.state.isMenuOpen })
   }
+
   /**
    * Programs that are currently open are rendered in the Taskbar. Only one program
    * can be active and it will appear in a depressed state. The Taskbar displays
@@ -100,6 +128,7 @@ class Taskbar extends Component {
       )
     })
   }
+
   render() {
     const { isMenuOpen, currentTime, mobileMode } = this.state
     const { programs, onOpenProgram, taskbarOrder } = this.props
@@ -144,6 +173,18 @@ class Taskbar extends Component {
       </div>
     )
   }
+}
+
+Taskbar.defaultProps = {
+  activeProgram: '',
+}
+Taskbar.propTypes = {
+  openPrograms: PropTypes.arrayOf(PropTypes.any).isRequired,
+  taskbarOrder: PropTypes.arrayOf(PropTypes.any).isRequired,
+  activeProgram: PropTypes.string,
+  onActiveProgramChange: PropTypes.func.isRequired,
+  programs: PropTypes.arrayOf(PropTypes.any).isRequired,
+  onOpenProgram: PropTypes.func.isRequired,
 }
 
 export default Taskbar

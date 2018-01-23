@@ -95,7 +95,7 @@ class BackendSkills extends Component {
     }
   }
   render() {
-    return Object.keys(this.state).map(skill => {
+    return Object.keys(this.state).map((skill) => {
       if (!this.state[skill].isExpanded) {
         return (
           <button
@@ -104,7 +104,7 @@ class BackendSkills extends Component {
               [skill]: {
                 ...this.state[skill],
                 isExpanded: !this.state[skill].isExpanded,
-              }
+              },
             })}
             key={skill}
           >
@@ -129,7 +129,7 @@ class BackendSkills extends Component {
             [skill]: {
               ...this.state[skill],
               isExpanded: !this.state[skill].isExpanded,
-            }
+            },
           })}
           key={skill}
         >

@@ -60,6 +60,7 @@ class Windows extends Component {
       selectedDesktopIcon: '',
     }
   }
+
   /**
    * The list of open programs must be specified prior to the Desktop mounting
    * or sequential Taskbar logic related to program IDs will be affected.
@@ -69,6 +70,7 @@ class Windows extends Component {
       openPrograms: [this.state.programs.find(program => program.id === 'adamProperties')],
     })
   }
+
   /**
    * When a Desktop Icon is pressed, it should change to its selected state.
    * @param {string} id ID of the icon being selected
@@ -76,6 +78,7 @@ class Windows extends Component {
   handleSelectDesktopIcon(id) {
     return this.setState({ selectedDesktopIcon: id })
   }
+
   /**
    * When a "currently selected" Desktop Icon is pressed, it should
    * revert back to its unselected state.
@@ -83,6 +86,7 @@ class Windows extends Component {
   handleUnselectDesktopIcon() {
     return this.setState({ selectedDesktopIcon: '' })
   }
+
   /**
    * When a program is opened, the currently selected Desktop Icon should be de-selected,
    * and the program should be opened to the forefront of any other open programs.
@@ -106,6 +110,7 @@ class Windows extends Component {
     }
     return null
   }
+
   /**
    * When a program in the Taskbar is pressed, it should be activated and brought to the forefront.
    * If the program is currently minimized, it should be restored to its previous state.
@@ -164,6 +169,7 @@ class Windows extends Component {
       activeProgram: id,
     })
   }
+
   /**
    * When a Minimize Button is pressed, the program should minimize itself to the Taskbar.
    * @param {string} id ID of the program being minimized
@@ -198,6 +204,7 @@ class Windows extends Component {
       activeProgram: '',
     })
   }
+
   /**
    * When a Maximize Button is pressed, the program should resize to full-screen, unless
    * it is already maximized. In this case, it should be restored to its initial size.
@@ -224,6 +231,7 @@ class Windows extends Component {
     }, [])
     return this.setState({ openPrograms: newDesktopState })
   }
+
   /**
    * When a Close Button is pressed, the program should be closed.
    * The `taskbarOrder` array must be updated to reflect the new desktop state.
@@ -236,6 +244,7 @@ class Windows extends Component {
       taskbarOrder: taskbarOrder.filter(programID => programID !== id),
     })
   }
+
   /**
    * This method takes the list of programs and generates a Desktop Icon for each one.
    * A wrapper div is required to facilitate "tap to open" gesture on mobile.
@@ -262,6 +271,7 @@ class Windows extends Component {
       </div>
     ))
   }
+
   /**
    * This method takes the list of currently-open programs and generates
    * a Window for each one based on its state.
@@ -273,7 +283,7 @@ class Windows extends Component {
     if (!openPrograms.length) {
       return null
     }
-    return openPrograms.map((program, i) => (
+    return openPrograms.map(program => (
       <Window
         state={program.state}
         dimensions={{
@@ -297,6 +307,7 @@ class Windows extends Component {
       />
     ))
   }
+
   render() {
     const {
       programs, openPrograms, taskbarOrder, activeProgram,

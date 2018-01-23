@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Taskbar.css'
 
 /**
@@ -20,6 +21,11 @@ const StartButton = (props) => {
       Menu
     </button>
   )
+}
+
+StartButton.propTypes = {
+  isActive: PropTypes.string.isRequired,
+  onToggle: PropTypes.func.isRequired,
 }
 
 export default StartButton

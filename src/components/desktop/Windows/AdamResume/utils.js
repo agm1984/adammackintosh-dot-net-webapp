@@ -18,7 +18,7 @@ const getConciseMonth = (m) => {
     'Sep',
     'Oct',
     'Nov',
-    'Dec'
+    'Dec',
   ]
   return monthNames[m]
 }

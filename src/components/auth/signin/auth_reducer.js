@@ -1,8 +1,5 @@
 import {
-  INITIALIZE_APP,
-  AUTH_SUCCESS,
-  AUTH_FAIL,
-  SIGN_OUT,
+  INITIALIZE_APP, AUTH_SUCCESS, AUTH_FAIL, SIGN_OUT,
 } from './auth_types'
 
 const INITIAL_STATE = {
@@ -10,6 +7,9 @@ const INITIAL_STATE = {
   isSigningIn: null,
 }
 
+/**
+ * The Auth Reducer is responsible for user authentication state changes.
+ */
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case INITIALIZE_APP:

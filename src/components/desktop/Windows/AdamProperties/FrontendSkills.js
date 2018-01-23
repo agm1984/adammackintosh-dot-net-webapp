@@ -65,7 +65,7 @@ class FrontendSkills extends Component {
     }
   }
   render() {
-    return Object.keys(this.state).map(skill => {
+    return Object.keys(this.state).map((skill) => {
       if (!this.state[skill].isExpanded) {
         return (
           <button
@@ -74,7 +74,7 @@ class FrontendSkills extends Component {
               [skill]: {
                 ...this.state[skill],
                 isExpanded: !this.state[skill].isExpanded,
-              }
+              },
             })}
             key={skill}
           >
@@ -99,7 +99,7 @@ class FrontendSkills extends Component {
             [skill]: {
               ...this.state[skill],
               isExpanded: !this.state[skill].isExpanded,
-            }
+            },
           })}
           key={skill}
         >

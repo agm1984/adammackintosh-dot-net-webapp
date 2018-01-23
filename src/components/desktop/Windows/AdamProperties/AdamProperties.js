@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import './AdamProperties.css'
+import PropTypes from 'prop-types'
 import BackendSkills from './BackendSkills'
 import FrontendSkills from './FrontendSkills'
+import './AdamProperties.css'
 
 class AdamProperties extends Component {
   constructor(props) {
@@ -13,6 +14,11 @@ class AdamProperties extends Component {
       currentlySelectedSocLink: '',
     }
   }
+
+  /**
+   * Additional Window Tabs can be added here as long as there is an accompanying
+   * case in the `renderActiveTabContent` method switch.
+   */
   renderTabs() {
     const tabs = [
       { id: 'general', label: 'General' },
@@ -29,6 +35,11 @@ class AdamProperties extends Component {
       </button>
     ))
   }
+
+  /**
+   * Window Content is loaded based on this method's switch cases. When a Tab is
+   * marked as active, its counterpart content is rendered.
+   */
   renderActiveTabContent() {
     switch (this.state.activeTab) {
       default:
@@ -87,7 +98,7 @@ class AdamProperties extends Component {
               </div>
               <FrontendSkills />
             </div>
-          )
+          ),
         }
         return (
           <div id="ski_wrapper">
@@ -164,7 +175,7 @@ class AdamProperties extends Component {
                 Pick one
               </div>
               <div id="soc_picker-background">
-                {Object.keys(links).map(name => {
+                {Object.keys(links).map((name) => {
                   if (currentlySelectedSocLink === links[name].id) {
                     return (
                       <button
@@ -255,6 +266,10 @@ class AdamProperties extends Component {
       </div>
     )
   }
+}
+
+AdamProperties.propTypes = {
+  onCloseWindow: PropTypes.func.isRequired,
 }
 
 export default AdamProperties

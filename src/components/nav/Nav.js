@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import handleGetPersonAvatar from './nav_actions'
+import { handleSignOut } from '../auth/signin/auth_actions'
 import logo from './images/Mackintosh-logo.png'
 import signout from './images/signout.png'
 
@@ -15,15 +16,17 @@ class NavContainer extends Component {
   componentDidMount() {
     this.props.handleGetPersonAvatar()
   }
+
   /**
    * When the user presses the Sign Out Button in the Nav Container,
    * he/she should be signed out.
    * @param {Synthetic Event} e React-controlled Synthetic Event
    */
-  handleSignout(e) {
+  handleSignOutClick(e) {
     e.preventDefault()
-    return this.props.dispatch({ type: 'SIGN_OUT' })
+    return this.props.handleSignOut()
   }
+
   render() {
     const Spacer = () => (
       <div className="nav_menu-spacer">|</div>
@@ -86,16 +89,18 @@ class NavContainer extends Component {
               to="/admin/profile"
               className="nav_user-signout"
             >
-              <img
-                id="nav_user-avatar"
-                src={this.props.person_avatar}
-                alt="User Avatar"
-              />
+              {this.props.person_avatar && (
+                <img
+                  id="nav_user-avatar"
+                  src={this.props.person_avatar}
+                  alt="User Avatar"
+                />
+              )}
             </NavLink>
             <NavLink
               to="/admin/signin"
               className="nav_user-signout"
-              onClick={e => this.handleSignout(e)}
+              onClick={e => this.handleSignOutClick(e)}
             >
               <img
                 className="nav_user-signout"
@@ -111,15 +116,12 @@ class NavContainer extends Component {
   }
 }
 
-NavContainer.defaultProps = {
-  dispatch: undefined,
-}
 NavContainer.propTypes = {
   router: PropTypes.shape({ // eslint-disable-line
     location: PropTypes.object,
   }).isRequired,
-  dispatch: PropTypes.func,
   handleGetPersonAvatar: PropTypes.func.isRequired,
+  handleSignOut: PropTypes.func.isRequired,
   person_avatar: PropTypes.string.isRequired,
 }
 
@@ -137,4 +139,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { handleGetPersonAvatar })(NavContainer)
+export default connect(mapStateToProps, {
+  handleGetPersonAvatar, handleSignOut,
+})(NavContainer)

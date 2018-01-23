@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import './Taskbar.css'
 
@@ -8,6 +9,7 @@ class StartMenu extends Component {
     super(props)
     this.handleNextClick = this.handleNextClick.bind(this)
   }
+
   /**
    * When the Start Menu is mounted (ie: displayed), an event listener should
    * be added to detect if the user is attempting to click outside its boundaries
@@ -16,6 +18,7 @@ class StartMenu extends Component {
   componentDidMount() {
     return document.addEventListener('click', this.handleNextClick, true)
   }
+
   /**
    * For memory management reasons, the event listener is removed when
    * the Start Menu unmounts.
@@ -23,18 +26,20 @@ class StartMenu extends Component {
   componentWillUnmount() {
     return document.removeEventListener('click', this.handleNextClick, true)
   }
+
   /**
    * This function runs every time the user clicks inside or outside the
    * Start Menu. The menu should be closed if the click is registered outside.
    * @param {Synthetic Event} event React-controlled Synthetic Event
    */
   handleNextClick(event) {
-    const domNode = ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
+    const domNode = ReactDOM.findDOMNode(this) // eslint-disable-line
     if (!domNode || !domNode.contains(event.target)) {
       return this.props.onCloseMenu()
     }
     return null
   }
+
   render() {
     const { programs, onOpenProgram } = this.props
     const windowsUpdates = {
@@ -178,6 +183,12 @@ class StartMenu extends Component {
       </div>
     )
   }
+}
+
+StartMenu.propTypes = {
+  onCloseMenu: PropTypes.func.isRequired,
+  programs: PropTypes.arrayOf(PropTypes.any).isRequired,
+  onOpenProgram: PropTypes.func.isRequired,
 }
 
 export default StartMenu
