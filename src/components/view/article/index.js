@@ -5,7 +5,7 @@ import { goBack, push } from 'react-router-redux'
 import { withApollo } from 'react-apollo'
 import {
   GetView, GetSubNav, GetErrors, GetSection, GetField, GetEmail,
-  GetQuill, GetBackLink,
+  GetThumbnail, GetQuill, GetBackLink,
 } from '../common'
 import { formatTime } from '../utils'
 import GET_ARTICLE_QUERY from './article_view_queries'
@@ -65,6 +65,7 @@ class ArticleViewContainer extends Component {
       article_tags,
     } = this.state.record
     const {
+      person_avatar,
       person_givenName,
       person_familyName,
       person_email,
@@ -94,6 +95,7 @@ class ArticleViewContainer extends Component {
           <GetQuill content={article_content} />
         </GetSection>
         <GetSection heading="AUTHOR">
+          <GetThumbnail value={person_avatar || ''} />
           <GetField name="Name" value={`${person_givenName} ${person_familyName}`} />
           <GetEmail name="Email" value={person_email} />
           <GetField name="Location" value={person_location} />

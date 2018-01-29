@@ -94,8 +94,6 @@ const editPersonValidatorSchema = (props) => {
     errors.person_bio = 'About Description must be under 2000 characters.'
   }
 
-  // console.log('ERRORS', errors)
-  console.log('RUNNING ERROR VALIDATOR')
   return errors
 }
 

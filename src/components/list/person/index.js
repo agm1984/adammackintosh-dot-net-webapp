@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withApollo } from 'react-apollo'
+import { compose, graphql, withApollo } from 'react-apollo'
 import {
   ListView, ListSubNav, ListSearchFilter, ListErrors,
 } from '../common'
@@ -10,53 +10,46 @@ import { customFind } from '../utils'
 import GET_ALL_PEOPLE_QUERY from './person_list_queries'
 
 class PersonListContainer extends Component {
-  state = {
-    records: [],
-    showInactive: false,
-    activePage: 0,
-    pagination: {},
-    search: '',
-    searchOptions: {
-      caseSensitive: false,
-      excludedKeys: ['person_avatar'],
-    },
-    searchMatches: [],
-    serverErrors: [],
-  }
-  async componentDidMount() {
-    window.scrollTo(0, 0)
-    return this.getInitialList()
-  }
-  async getInitialList() {
-    try {
-      const res = await this.props.client.query({
-        query: GET_ALL_PEOPLE_QUERY,
-      })
-      const { getAllPeople } = res.data
-      return this.setState({ records: getAllPeople })
-    } catch (e) {
-      return null
+  constructor(props) {
+    super(props)
+    this.state = {
+      showInactive: false,
+      activePage: 0,
+      pagination: {},
+      search: '',
+      searchOptions: {
+        caseSensitive: false,
+        excludedKeys: ['person_avatar'],
+      },
+      searchMatches: [],
+      serverErrors: [],
     }
   }
+  async componentDidMount() {
+    return window.scrollTo(0, 0)
+  }
   getListToRender() {
-    const { searchMatches, search, records } = this.state
+    const { getAllPeople } = this.props.data
+    const { searchMatches, search } = this.state
     if (!searchMatches.length && !search) {
-      return records
+      return getAllPeople
     }
     return searchMatches
   }
   getTotalPages() {
-    const { searchMatches, records } = this.state
+    const { getAllPeople } = this.props.data
+    const { searchMatches } = this.state
     if (!searchMatches.length) {
-      return Math.ceil(records.length / 10)
+      return Math.ceil(getAllPeople.length / 10)
     }
     return Math.ceil(searchMatches.length / 10)
   }
   handleFilterChange({ target: { value } }) {
-    const { records, searchOptions } = this.state
+    const { getAllPeople } = this.props.data
+    const { searchOptions } = this.state
     return this.setState({
       search: value,
-      searchMatches: customFind(records, value, searchOptions),
+      searchMatches: customFind(getAllPeople, value, searchOptions),
     })
   }
   handlePageChange(pager) {
@@ -66,17 +59,22 @@ class PersonListContainer extends Component {
     })
   }
   toggleInactive() {
-    const { showInactive, records, searchOptions } = this.state
+    const { getAllPeople } = this.props.data
+    const { showInactive, searchOptions } = this.state
     return this.setState({
       showInactive: !showInactive,
       searchMatches: (!showInactive)
-        ? customFind(records, 'Inactive', searchOptions)
+        ? customFind(getAllPeople, 'Inactive', searchOptions)
         : [],
     })
   }
   render() {
+    if (this.props.data.loading) {
+      return <ListView />
+    }
+    const { getAllPeople } = this.props.data
     const {
-      activePage, pagination, records, showInactive, search, searchMatches,
+      activePage, pagination, showInactive, search, searchMatches,
     } = this.state
     return (
       <ListView>
@@ -94,7 +92,7 @@ class PersonListContainer extends Component {
         <ListErrors errors={this.state.serverErrors} />
         <PersonTable
           pageSize={(search.length > 0 && searchMatches.length === 0) ? 7 : 25}
-          searchMatches={(!searchMatches.length) ? records : searchMatches}
+          searchMatches={(!searchMatches.length) ? getAllPeople : searchMatches}
           onChangePage={pagerState => this.handlePageChange(pagerState)}
           activePage={activePage}
           isEmpty={(search.length > 0 && searchMatches.length === 0)}
@@ -108,7 +106,10 @@ class PersonListContainer extends Component {
 }
 
 PersonListContainer.propTypes = {
-  client: PropTypes.objectOf(PropTypes.any).isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
-export default connect()(withApollo(PersonListContainer))
+export default compose(
+  connect(),
+  graphql(GET_ALL_PEOPLE_QUERY),
+)(withApollo(PersonListContainer))

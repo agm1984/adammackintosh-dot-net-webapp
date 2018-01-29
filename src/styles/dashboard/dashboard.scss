@@ -2,10 +2,12 @@
 @import "../variables/_sizes.scss";
 @import "../mixins/_mixins.scss";
 
-// ## VIEW LAYOUT
+// ## DASHBOARD                                      LAYOUT
+// ########################################################
 
 .dash_wrapper {
-  width: 100rem; }
+  width: 100rem;
+}
 
 .dash_container {
   display: flex;
@@ -16,15 +18,20 @@
   padding: $md $md $xl $md;
   box-sizing: border-box;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid $adam-app-border;
   border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
-  box-shadow: 0px 1px 1px #e5e5e5; }
+  box-shadow: 0px 1px 1px $adam-app-border;
+}
+
+// ## DASHBOARD                             CHART CONTAINER
+// ########################################################
 
 .dash_chart-container {
   width: 100%;
   margin-bottom: 4.8rem;
   padding-bottom: $md;
-  border-bottom: 1px solid #e5e5e5; }
+  border-bottom: 1px solid $adam-app-border;
+}
 
 .dash_chart-title {
   display: flex;
@@ -32,15 +39,20 @@
   justify-content: center;
   font-size: 1.4rem;
   line-height: 1.4rem;
-  color: #1A1A1A; }
+  color: $adam-heading;
+}
 
-// cant use $md (must use 1.6rem)
+// ## DASHBOARD                                     WIDGETS
+// ########################################################
+
 .dash_widget-left {
   width: calc(50% - 1.6rem);
-  margin-right: $md; }
+  margin-right: $md;
+}
 .dash_widget-right {
   width: calc(50% - 1.6rem);
-  margin-left: $md; }
+  margin-left: $md;
+}
 
 .dash_widget-heading {
   display: flex;
@@ -50,14 +62,16 @@
   font-size: 2rem;
   line-height: 2rem;
   font-weight: 600;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .dash_widget-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; }
+  width: 100%;
+}
 
 .dash_widget-row {
   display: flex;
@@ -65,46 +79,58 @@
   width: 100%;
   margin-top: $md;
   font-size: 1.4rem;
-  line-height: 1.4rem; }
+  line-height: 1.4rem;
+}
 
 .dash_widget-label {
   width: 50%;
   padding-right: $md;
   box-sizing: border-box;
   text-align: right;
-  color: #b3b3b3; }
+  color: $adam-sub-heading;
+}
 
 a.dash_link:link {
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 600;
-  color: #dd0426;
-  text-decoration: none; }
+  color: $adam-red;
+  text-decoration: none;
+}
 
 a.dash_link:hover {
-  color: #1A1A1A; }
+  color: $adam-heading;
+}
 
 a.dash_link:visited {
-  color: #dd0426; }
+  color: $adam-red;
+}
 
 a.dash_link:active {
-  color: #dd0426; }
+  color: $adam-red;
+}
 
 .dash_widget-emphasis {
   font-weight: 600;
-  color: #1A1A1A; }
+  color: $adam-heading;
+}
 
 .dash_label-normal {
-  color: #b3b3b3; }
+  color: $adam-sub-heading;
+}
 
 .dash_label-red {
-  color: #dd0426; }
+  color: $adam-red;
+}
 
 .dash_label-blue {
-  color: #3f88c5; }
+  color: $adam-blue;
+}
 
 .dash_label-orange {
-  color: #f0a202; }
+  color: $adam-orange;
+}
 
 .dash_label-green {
-  color: #3d9720; }
+  color: $adam-green;
+}

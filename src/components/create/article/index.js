@@ -8,6 +8,7 @@ import {
   handleGetAuthor, handleCreateRedirect, handleGoBack,
 } from './article_create_actions'
 import ADD_ARTICLE_MUTATION from './article_create_mutations'
+import GET_ALL_ARTICLES_QUERY from '../../list/article/article_list_queries'
 
 class ArticleCreateContainer extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class ArticleCreateContainer extends Component {
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
     this.articlePlainText = ''
   }
+
   /**
    * When the Create View loads, the Creator's Serial Number should be retrieved.
    * In the future, this should be expanded to retrieve a list of Authors.
@@ -26,6 +28,7 @@ class ArticleCreateContainer extends Component {
     window.scrollTo(0, 0)
     return this.props.handleGetAuthor()
   }
+
   /**
    * When the form is submitted, the values should be sent to the server.
    * Tags must be converted from an Array to comma-separated values String.
@@ -50,6 +53,7 @@ class ArticleCreateContainer extends Component {
           article_authorSerialNumber: person_serialNumber,
           article_tags: convertTagsToString(props.article_tags),
         },
+        refetchQueries: [{ query: GET_ALL_ARTICLES_QUERY }],
       })
       return this.props.handleCreateRedirect()
     } catch (error) {
@@ -58,6 +62,7 @@ class ArticleCreateContainer extends Component {
       })
     }
   }
+
   render() {
     return (
       <CreateView>
@@ -97,6 +102,7 @@ const mapStateToProps = (state) => {
     person_serialNumber,
   }
 }
+
 export default compose(
   connect(mapStateToProps, {
     handleGetAuthor, handleCreateRedirect, handleGoBack,

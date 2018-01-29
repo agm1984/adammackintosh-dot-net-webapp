@@ -1,8 +1,13 @@
+import { push } from 'react-router-redux'
+import client from '../../apolloClient'
 import {
   REGISTRATION_NEXT_STEP,
   REGISTRATION_PREV_STEP,
   REGISTRATION_COMPLETE,
 } from './reg_types'
+import {
+  INITIALIZE_APP, AUTH_SUCCESS, SIGN_OUT,
+} from '../signin/auth_types'
 
 /**
  * Proceeds to the next registration step.
@@ -32,4 +37,23 @@ export const handleCompletion = token => (dispatch) => {
     type: REGISTRATION_COMPLETE,
     payload: 'DONE',
   })
+}
+
+/**
+ * After the new user is done signing up, he/she should not have to sign in
+ * and should be redirected to the Admin Dashboard View.
+ */
+export const handleFirstTimeSignIn = () => async (dispatch) => {
+  try {
+    dispatch({ type: INITIALIZE_APP })
+    const user = await JSON.parse(localStorage.getItem('token@adam'))
+    if (!user) {
+      return dispatch({ type: SIGN_OUT })
+    }
+    client.resetStore()
+    dispatch({ type: AUTH_SUCCESS })
+    return dispatch(push('/admin/dashboard'))
+  } catch (e) {
+    return dispatch({ type: SIGN_OUT })
+  }
 }

@@ -102,11 +102,15 @@ const PersonTable = (props) => {
               const { value } = cellProps
               return formatTime(+value)
             },
+            minWidth: 150,
+            maxWidth: 150,
           },
           {
             Header: 'STATUS',
             id: 'person_status',
             accessor: 'person_status',
+            minWidth: 125,
+            maxWidth: 125,
           },
           {
             Header: 'ACTIONS',

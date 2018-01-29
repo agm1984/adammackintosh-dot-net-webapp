@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withApollo } from 'react-apollo'
+import { compose, graphql, withApollo } from 'react-apollo'
 import {
   ListView, ListSubNav, ListSearchFilter, ListErrors,
 } from '../common'
@@ -13,53 +13,46 @@ import GET_ALL_ARTICLES_QUERY from './article_list_queries'
 // https://github.com/react-tools/react-show
 
 class ArticleListContainer extends Component {
-  state = {
-    records: [],
-    showInactive: false,
-    activePage: 0,
-    pagination: {},
-    search: '',
-    searchOptions: {
-      caseSensitive: false,
-      excludedKeys: ['article_avatar'],
-    },
-    searchMatches: [],
-    serverErrors: [],
-  }
-  componentDidMount() {
-    window.scrollTo(0, 0)
-    return this.getInitialList()
-  }
-  async getInitialList() {
-    try {
-      const res = await this.props.client.query({
-        query: GET_ALL_ARTICLES_QUERY,
-      })
-      const { getAllArticles } = res.data
-      return this.setState({ records: getAllArticles })
-    } catch (e) {
-      return null
+  constructor(props) {
+    super(props)
+    this.state = {
+      showInactive: false,
+      activePage: 0,
+      pagination: {},
+      search: '',
+      searchOptions: {
+        caseSensitive: false,
+        excludedKeys: ['article_avatar'],
+      },
+      searchMatches: [],
+      serverErrors: [],
     }
   }
+  componentDidMount() {
+    return window.scrollTo(0, 0)
+  }
   getListToRender() {
-    const { searchMatches, search, records } = this.state
+    const { getAllArticles } = this.props.data
+    const { searchMatches, search } = this.state
     if (!searchMatches.length && !search) {
-      return records
+      return getAllArticles
     }
     return searchMatches
   }
   getTotalPages() {
-    const { searchMatches, records } = this.state
+    const { getAllArticles } = this.props.data
+    const { searchMatches } = this.state
     if (!searchMatches.length) {
-      return Math.ceil(records.length / 10)
+      return Math.ceil(getAllArticles.length / 10)
     }
     return Math.ceil(searchMatches.length / 10)
   }
   handleFilterChange({ target: { value } }) {
-    const { records, searchOptions } = this.state
+    const { getAllArticles } = this.props.data
+    const { searchOptions } = this.state
     return this.setState({
       search: value,
-      searchMatches: customFind(records, value, searchOptions),
+      searchMatches: customFind(getAllArticles, value, searchOptions),
     })
   }
   handlePageChange(pager) {
@@ -69,17 +62,22 @@ class ArticleListContainer extends Component {
     })
   }
   toggleInactive() {
-    const { showInactive, records, searchOptions } = this.state
+    const { getAllArticles } = this.props.data
+    const { showInactive, searchOptions } = this.state
     return this.setState({
       showInactive: !showInactive,
       searchMatches: (!showInactive)
-        ? customFind(records, 'Inactive', searchOptions)
+        ? customFind(getAllArticles, 'Inactive', searchOptions)
         : [],
     })
   }
   render() {
+    if (this.props.data.loading) {
+      return <ListView />
+    }
+    const { getAllArticles } = this.props.data
     const {
-      activePage, pagination, records, showInactive, search, searchMatches,
+      activePage, pagination, showInactive, search, searchMatches,
     } = this.state
     return (
       <ListView>
@@ -97,13 +95,13 @@ class ArticleListContainer extends Component {
         <ListErrors errors={this.state.serverErrors} />
         <ArticleTable
           pageSize={(search.length > 0 && searchMatches.length === 0) ? 7 : 25}
-          searchMatches={(!searchMatches.length) ? records : searchMatches}
+          searchMatches={(!searchMatches.length) ? getAllArticles : searchMatches}
           onChangePage={pagerState => this.handlePageChange(pagerState)}
           activePage={activePage}
           isEmpty={(search.length > 0 && searchMatches.length === 0)}
           data={this.getListToRender()}
           bottomData={pagination}
-          noDataText="No Users to Show"
+          noDataText="No Articles to Show"
         />
       </ListView>
     )
@@ -111,7 +109,10 @@ class ArticleListContainer extends Component {
 }
 
 ArticleListContainer.propTypes = {
-  client: PropTypes.objectOf(PropTypes.any).isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
-export default connect()(withApollo(ArticleListContainer))
+export default compose(
+  connect(),
+  graphql(GET_ALL_ARTICLES_QUERY),
+)(withApollo(ArticleListContainer))

@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { reduxForm, Field } from 'redux-form'
 import {
-  UpdateSection, UpdateInput, UpdateInputTags, UpdateListSelect, UpdateQuill,
+  UpdateSection, UpdateInput, UpdateInputTags,
+  UpdateListSelect, UpdateQuill,
 } from '../common'
 import validate from './article_edit_validator'
 

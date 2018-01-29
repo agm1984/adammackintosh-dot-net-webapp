@@ -21,7 +21,6 @@ class EnterPassword extends Component {
     this.handleRegSubmit = this.handleRegSubmit.bind(this)
   }
   async handleRegSubmit(props) {
-    console.log('firing this')
     try {
       const res = await this.props.mutate({
         variables: {
@@ -33,7 +32,6 @@ class EnterPassword extends Component {
       const { token } = res.data.register
       return this.props.handleCompletion(token)
     } catch (e) {
-      console.log(e)
       return this.setState({ serverErrors: [e.graphQLErrors[0].message] })
     }
   }

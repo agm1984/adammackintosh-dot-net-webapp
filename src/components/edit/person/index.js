@@ -8,6 +8,7 @@ import PersonEditForm from './PersonEditForm'
 import compareObjectStates from '../utils'
 import GET_PERSON_QUERY from './person_edit_queries'
 import EDIT_PERSON_MUTATION from './person_edit_mutations'
+import GET_ALL_PEOPLE_QUERY from '../../list/person/person_list_queries'
 
 class PersonEditContainer extends Component {
   constructor(props) {
@@ -18,13 +19,16 @@ class PersonEditContainer extends Component {
     }
     this.handleEditSubmit = this.handleEditSubmit.bind(this)
   }
+
   /**
    * When the Edit View loads, the Person's data should be retrieved.
    */
   async componentDidMount() {
     window.scrollTo(0, 0)
-    this.getPerson(this.props.match.params.person_serialNumber)
+    const { person_serialNumber } = this.props.match.params
+    this.getPerson(person_serialNumber)
   }
+
   /**
    * This method gets the Person data and puts it into the Component's state.
    * @param {String} person_serialNumber Look-up Serial Number for the Person
@@ -38,9 +42,12 @@ class PersonEditContainer extends Component {
       const { getPerson } = res.data
       return this.setState({ record: getPerson })
     } catch (e) {
-      return this.setState({ serverErrors: ['Problem getting person record.'] })
+      return this.setState({
+        serverErrors: ['Problem getting person record.'],
+      })
     }
   }
+
   /**
    * When the form is submitted, the current values should be compared with their
    * prior values, and only values that were changed should be sent to the server.
@@ -55,6 +62,7 @@ class PersonEditContainer extends Component {
           ...updates,
           person_serialNumber: record.person_serialNumber,
         },
+        refetchQueries: [{ query: GET_ALL_PEOPLE_QUERY }],
       })
       return this.props.dispatch(push('/admin/people'))
     } catch (e) {
@@ -63,13 +71,13 @@ class PersonEditContainer extends Component {
       })
     }
   }
+
   render() {
     if (!Object.keys(this.state.record).length) {
       return <UpdateView />
     }
-    const {
-      person_givenName, person_familyName, person_status,
-    } = this.state.record
+    const { record, serverErrors } = this.state
+    const { person_givenName, person_familyName, person_status } = record
     return (
       <UpdateView>
         <UpdateSubNav
@@ -78,10 +86,10 @@ class PersonEditContainer extends Component {
           recordLabel={`${person_givenName.toUpperCase()} ${person_familyName.toUpperCase()}`}
           recordStatus={person_status.toUpperCase()}
         />
-        <UpdateErrors errors={this.state.serverErrors} />
+        <UpdateErrors errors={serverErrors} />
         <PersonEditForm
           onEditSubmit={updatedProps => this.handleEditSubmit(updatedProps)}
-          initialValues={this.state.record}
+          initialValues={record}
           handleBackPress={() => this.props.dispatch(goBack())}
         />
       </UpdateView>

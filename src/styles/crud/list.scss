@@ -147,7 +147,8 @@ button.list_subnav_link:active {
   font-weight: $fw-heading; }
 
 .list_pagination li {
-  // padding: 0 $xs 0 $xs; }
+  padding: 0 $xxs 0 $xxs;
+  min-width: 2.9rem;
 }
 
 .list_pagination-controls {
@@ -164,8 +165,10 @@ button.list_subnav_link:active {
   margin-right: $xs;
   flex: 1; }
 
-.list_pagination-pages button {
-  max-width: $xxs; }
+// .list_pagination-pages > button {
+//   max-width: $xxs;
+//   background-color: green;
+// }
 
 .list_pagination button {
   outline: none;

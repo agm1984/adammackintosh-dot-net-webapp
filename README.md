@@ -24,6 +24,9 @@ Deployment
 
 1. Jenkins CI
 
+## Responsive Design
+The site is designed to support down to 1024px width, and the Windows 98 portion is responsive down to 350px width and mobile mode toggled below 1024px. A design constraint was applied to ensure the Taskbar and Start Menu would be functional at mobile widths.
+
 ## Install
 ``` bash
 $ git clone https://github.com/agm1984/adammackintosh-dot-net-webapp.git

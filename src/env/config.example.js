@@ -1,8 +1,7 @@
 /**
  * The App's run-time environment can be dynamically controlled by passing
- * different environments into the object literal lookup table.
- * This is done to facilitate unit testing and to simplify app
- * instantiation code complexity.
+ * different environments into the lookup table. This is done to facilitate
+ * unit testing and to simplify app instantiation code complexity.
  * @param {String} NODE_ENV Currently set run-time Environment
  */
 const getConfig = (NODE_ENV) => {
@@ -13,6 +12,7 @@ const getConfig = (NODE_ENV) => {
         credentials: 'same-origin',
         mode: 'cors',
       },
+      VERBOSE_REDUX_LOGGING: false,
     },
     production: {
       API_URI: 'http://INSERT_URL:PORT/graphql',
@@ -20,6 +20,7 @@ const getConfig = (NODE_ENV) => {
         credentials: 'same-origin',
         mode: 'cors',
       },
+      VERBOSE_REDUX_LOGGING: false,
     },
   }
   return env[NODE_ENV]

@@ -8,6 +8,7 @@ const GET_ARTICLES_QUERY = gql`
       article_slug
       article_created
       article_author {
+        person_serialNumber
         person_givenName
         person_familyName
       }

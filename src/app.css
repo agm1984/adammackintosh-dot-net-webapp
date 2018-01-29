@@ -1714,7 +1714,8 @@ template {
   border-right: 0.1rem solid #e5e5e5;
   border-radius: 0;
   outline: 0;
-  background-color: #fafafa; }
+  background-color: #fafafa;
+  cursor: pointer; }
 
 .geosuggest__item {
   list-style-type: none;
@@ -1967,6 +1968,9 @@ a.register_register:active {
   border: 0.1rem solid #e5e5e5;
   border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   box-shadow: 0 0.1rem 0.1rem #e5e5e5; }
+
+.auth_done {
+  font-size: 1.6rem; }
 
 #auth_logo-container {
   display: flex;
@@ -2518,6 +2522,10 @@ button.list_subnav_link:active {
 .list_pagination-number {
   font-weight: 700; }
 
+.list_pagination li {
+  padding: 0 0.4rem 0 0.4rem;
+  min-width: 2.9rem; }
+
 .list_pagination-controls {
   display: flex;
   flex-direction: row;
@@ -2534,9 +2542,6 @@ button.list_subnav_link:active {
   flex-direction: row;
   margin-right: 0.8rem;
   flex: 1; }
-
-.list_pagination-pages button {
-  max-width: 0.4rem; }
 
 .list_pagination button {
   outline: none;
@@ -3331,6 +3336,17 @@ a.view_link:hover {
 
 a.view_link:active {
   color: #1A1A1A; }
+
+#view_avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+#view_avatar-photo {
+  margin-bottom: 1.6rem;
+  height: 12.8rem;
+  width: 12.8rem;
+  border-radius: 50%; }
 
 .view_back {
   margin-top: 3.2rem;

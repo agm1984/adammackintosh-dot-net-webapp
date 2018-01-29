@@ -10,7 +10,7 @@ import createArticle from '../components/create/article/article_create_reducer'
 import editArticle from '../components/edit/article/article_edit_reducer'
 
 /**
- * Upon initialization, Redux reducers are combined loaded into the app state.
+ * Upon initialization, Redux reducers are combined and loaded into the app state.
  * This app follows the Folder-as-a-Component Architecture Pattern to
  * minimize coupling and to maximize scalability. This also promotes
  * multi-developer workflow by minimizing file collisions and merge conflicts.
@@ -20,8 +20,8 @@ const reducers = combineReducers({
 })
 
 /**
- * History is exported as a Singleton for Redux helper methods injected
- * into middleware, and the history is loaded into the Router
+ * History is exported as a Singleton. History-related Redux helper methods
+ * are added into middleware, and the History Object is loaded into the Router
  * in the Root Component.
  */
 export const history = createHistory()

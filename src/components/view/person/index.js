@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { goBack, push } from 'react-router-redux'
 import { withApollo } from 'react-apollo'
 import {
-  GetView, GetSubNav, GetErrors, GetSection, GetField, GetEmail, GetBackLink,
+  GetView, GetSubNav, GetErrors, GetSection,
+  GetThumbnail, GetField, GetEmail, GetBackLink,
 } from '../common'
 import { formatTel, formatTime } from '../utils'
 import GET_PERSON_QUERY from './person_view_queries'
@@ -91,7 +92,7 @@ class PersonViewContainer extends Component {
           />
         </GetSection>
         <GetSection heading="DETAILS">
-          <GetField name="Avatar URL" value={person_avatar || ''} />
+          <GetThumbnail value={person_avatar || ''} />
           <GetField name="First Name" value={person_givenName} />
           <GetField name="Last Name" value={person_familyName} />
           <GetEmail name="Email" value={person_email} />

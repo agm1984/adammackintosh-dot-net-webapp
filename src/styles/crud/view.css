@@ -103,6 +103,17 @@ a.view_link:hover {
 a.view_link:active {
   color: #1A1A1A; }
 
+#view_avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+#view_avatar-photo {
+  margin-bottom: 1.6rem;
+  height: 12.8rem;
+  width: 12.8rem;
+  border-radius: 50%; }
+
 .view_back {
   margin-top: 3.2rem;
   font-size: 1.4rem;

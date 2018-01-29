@@ -10,6 +10,7 @@ import {
 import compareObjectStates from '../utils'
 import { GET_ARTICLE_QUERY } from './article_edit_queries'
 import EDIT_ARTICLE_MUTATION from './article_edit_mutations'
+import GET_ALL_ARTICLES_QUERY from '../../list/article/article_list_queries'
 
 class ArticleEditContainer extends Component {
   constructor(props) {
@@ -27,7 +28,8 @@ class ArticleEditContainer extends Component {
    */
   async componentDidMount() {
     window.scrollTo(0, 0)
-    this.getArticle(this.props.match.params.article_slug)
+    const { article_slug } = this.props.match.params
+    this.getArticle(article_slug)
     return this.props.handleGetEditor()
   }
 
@@ -44,7 +46,9 @@ class ArticleEditContainer extends Component {
       const { getArticle } = res.data
       return this.setState({ record: getArticle })
     } catch (e) {
-      return this.setState({ serverErrors: ['Problem getting article record.'] })
+      return this.setState({
+        serverErrors: ['Problem getting article record.'],
+      })
     }
   }
 
@@ -79,6 +83,7 @@ class ArticleEditContainer extends Component {
             ? undefined
             : this.articlePlainText,
         },
+        refetchQueries: [{ query: GET_ALL_ARTICLES_QUERY }],
       })
       return this.props.handleEditRedirect()
     } catch (e) {
@@ -92,6 +97,7 @@ class ArticleEditContainer extends Component {
     if (!Object.keys(this.state.record).length) {
       return <UpdateView />
     }
+    const { record, serverErrors } = this.state
     const { article_title, article_status } = this.state.record
     return (
       <UpdateView>
@@ -101,10 +107,10 @@ class ArticleEditContainer extends Component {
           recordLabel={article_title.toUpperCase()}
           recordStatus={article_status.toUpperCase()}
         />
-        <UpdateErrors errors={this.state.serverErrors} />
+        <UpdateErrors errors={serverErrors} />
         <ArticleEditForm
           onEditSubmit={updatedProps => this.handleEditSubmit(updatedProps)}
-          initialValues={this.state.record}
+          initialValues={record}
           handleBackPress={(e) => {
             e.preventDefault()
             this.props.handleGoBack()
@@ -128,7 +134,6 @@ ArticleEditContainer.propTypes = {
   person_serialNumber: PropTypes.string.isRequired,
   handleEditRedirect: PropTypes.func.isRequired,
   handleGoBack: PropTypes.func.isRequired,
-
 }
 
 /**

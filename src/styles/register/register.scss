@@ -35,11 +35,13 @@
 
 #register_logo-container {
   @include flex(column);
-  @include flex-center; }
+  @include flex-center;
+}
 
 #register_logo {
   width: 50%;
-  height: auto; }
+  height: auto;
+}
 
 #register_heading {
   width: 100%;
@@ -49,7 +51,8 @@
   line-height: $font-auth;
   font-weight: $fw-md;
   color: $adam-heading;
-  text-align: center; }
+  text-align: center;
+}
 
 // ## REGISTER FORM                               LOGO AREA
 // ########################################################
@@ -69,7 +72,8 @@
   text-align: center;
   // background-color: blue;
   font-size: 1.4rem;
-  line-height: 1.4rem; }
+  line-height: 1.4rem;
+}
 
 .register_register-link {
   outline: none; // these 5 styles need to be on every button (mixin)
@@ -80,12 +84,15 @@
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 400;
-  color: #dd0426;
-  text-decoration: none; }
+  color: $adam-red;
+  text-decoration: none;
+}
 a.register_register-link:hover {
-  color: #1A1A1A; }
+  color: $adam-heading;
+}
 a.register_register:active {
-  color: #dd0426; }
+  color: $adam-red;
+}
 
 
 
@@ -96,7 +103,8 @@ a.register_register:active {
   @include flex(column);
   width: 100%;
   height: $row-height-md;
-  margin-top: $xs; }
+  margin-top: $xs;
+}
 
 
 // ## REGISTER FORM                                  ERRORS
@@ -109,4 +117,5 @@ a.register_register:active {
   font-style: italic;
   font-size: $font-md;
   line-height: $font-xl;
-  color: $adam-red; }
+  color: $adam-red;
+}

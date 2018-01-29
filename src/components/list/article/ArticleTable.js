@@ -39,10 +39,11 @@ const ArticleTable = (props) => {
                   className="table_link-clickable"
                   to={`/admin/articles/view/${_original.article_slug}`}
                 >
-                  {_original.article_title}
+                  {_original.article_title.substring(0, 40)}
                 </NavLink>
               )
             },
+            minWidth: 200,
           },
           {
             Header: 'TAGS',
@@ -84,11 +85,15 @@ const ArticleTable = (props) => {
               const { value } = cellProps
               return formatTime(+value)
             },
+            minWidth: 150,
+            maxWidth: 150,
           },
           {
             Header: 'STATUS',
             id: 'article_status',
             accessor: 'article_status',
+            minWidth: 125,
+            maxWidth: 125,
           },
           {
             Header: 'ACTIONS',

@@ -1,5 +1,9 @@
 import React from 'react'
 
+/**
+ * This 404 Component is displayed when a URL does not
+ * match with a corresponding page.
+ */
 const NotFoundPage = () => (
   <div className="page_container">
     <div

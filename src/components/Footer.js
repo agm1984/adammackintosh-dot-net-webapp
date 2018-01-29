@@ -11,7 +11,7 @@ const Footer = () => (
         Portfolio v{process.env.REACT_APP_VERSION || '1'}
       </span>
       <span id="footer_text-brand">
-        {(new Date()).getFullYear()} © Adam Mackintosh
+        {new Date().getFullYear()} © Adam Mackintosh
       </span>
     </div>
   </div>
