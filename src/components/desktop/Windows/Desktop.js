@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Window from './Window/Window'
 import DesktopIcon from './DesktopIcon/DesktopIcon'
 import Taskbar from './Taskbar/Taskbar'
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner'
 import AdamProperties from './AdamProperties/AdamProperties'
 import AdamResume from './AdamResume/AdamResume'
 import AdamHobbies from './AdamHobbies/AdamHobbies'
@@ -58,6 +59,7 @@ class Windows extends Component {
       taskbarOrder: ['adamProperties'],
       activeProgram: 'adamProperties',
       selectedDesktopIcon: '',
+      isLoading: true,
     }
   }
 
@@ -69,6 +71,25 @@ class Windows extends Component {
     return this.setState({
       openPrograms: [this.state.programs.find(program => program.id === 'adamProperties')],
     })
+  }
+
+  /**
+   * When the Desktop initially renders, the JavaScript bundle may still be downloading,
+   * so the App displays a "Optimizing your experience" modal that disappears when
+   * the DOM has completely loaded.
+   */
+  componentDidMount() {
+    const interval = setInterval(() => {
+      if (document.readyState === 'complete') {
+        clearInterval(interval)
+        this.setState({ isLoading: false })
+      }
+    }, 100)
+    const windowWidth = document.getElementById('root').offsetWidth
+    if (windowWidth < 1024) {
+      return this.handleActivateProgram('adamProperties', true)
+    }
+    return null
   }
 
   /**
@@ -326,6 +347,7 @@ class Windows extends Component {
           onActiveProgramChange={id => this.handleActivateProgram(id)}
           onOpenProgram={id => this.handleOpenProgram(id)}
         />
+        <LoadingSpinner isLoading={this.state.isLoading} />
       </div>
     )
   }

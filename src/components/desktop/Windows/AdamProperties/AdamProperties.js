@@ -56,8 +56,8 @@ class AdamProperties extends Component {
             <div id="gen_right">
               <div className="gen_right-heading">Name:</div>
               <div className="gen_right-text">Adam Mackintosh</div>
-              <div className="gen_right-heading">Lives in:</div>
-              <div className="gen_right-text">Nanaimo, BC</div>
+              <div className="gen_right-heading">Location:</div>
+              <div className="gen_right-text">Vancouver Island, BC</div>
               <div className="gen_right-text">Canada</div>
               <div className="gen_right-heading">Work Experience:</div>
               <div className="gen_right-text">15+ years</div>

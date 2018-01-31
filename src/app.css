@@ -1862,6 +1862,10 @@ template {
   border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   box-shadow: 0 0.1rem 0.1rem #e5e5e5; }
 
+@media screen and (max-width: 1024px) {
+  .reg_form {
+    width: 100%; } }
+
 #register_logo-container {
   display: flex;
   flex-direction: column;
@@ -1968,6 +1972,10 @@ a.register_register:active {
   border: 0.1rem solid #e5e5e5;
   border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   box-shadow: 0 0.1rem 0.1rem #e5e5e5; }
+
+@media screen and (max-width: 1024px) {
+  #auth_form {
+    width: 100%; } }
 
 .auth_done {
   font-size: 1.6rem; }

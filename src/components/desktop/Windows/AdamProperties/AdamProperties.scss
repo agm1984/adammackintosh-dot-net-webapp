@@ -338,13 +338,15 @@
 }
 
 .soc_buttons-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90px;
   height: 28px;
   color: black;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
-  line-height: 20px;
   background-color: #c0c0c0;
   border-top: 2px solid white;
   border-right: 2px solid #222;
@@ -354,8 +356,11 @@
 }
 
 .soc_buttons-buttonDisabled {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90px;
-  height: 25px;
+  height: 28px;
   color: #666666;
   font-size: 14px;
   text-align: center;

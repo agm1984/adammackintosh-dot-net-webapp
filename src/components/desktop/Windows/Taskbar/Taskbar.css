@@ -75,8 +75,8 @@
   position: absolute;
   transform: rotate(-90deg);
   color: white;
-  top: 500px;
-  left: -51px;
+  bottom: 75px;
+  left: -50px;
   font-size: 25px;
   font-weight: bold; }
 
@@ -95,7 +95,8 @@
   flex-direction: row;
   align-items: center;
   padding: 8px 100px 8px 70px;
-  list-style: none; }
+  list-style: none;
+  white-space: nowrap; }
 
 .start-menu button {
   background: none;

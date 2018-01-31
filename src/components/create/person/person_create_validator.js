@@ -1,40 +1,22 @@
 import validator from 'validator'
 
-export default function personValidatorSchema({
-  person_status,
-  person_memberType,
-  person_canBeEmailed,
-  person_avatar,
-  person_givenName,
-  person_familyName,
-  person_email,
-  person_tel,
-  // person_gender,
-  // person_birthday,
-  person_password,
-  person_confirmPassword,
-  person_location,
-  person_bio,
-}) {
-  // console.log('VALIDATE', {
-  //   person_status,
-  //   person_memberType,
-  //   person_memberID,
-  //   person_givenName,
-  //   person_familyName,
-  //   person_email,
-  //   person_tel,
-  //   person_gender,
-  //   person_birthday,
-  //   person_password,
-  //   person_confirmPassword,
-  //   person_certified,
-  //   person_acceptedEULA,
-  //   person_country,
-  //   person_province,
-  //   person_city,
-  //   person_about,
-  // })
+const personValidatorSchema = (props) => {
+  const {
+    person_status,
+    person_memberType,
+    person_canBeEmailed,
+    person_avatar,
+    person_givenName,
+    person_familyName,
+    person_email,
+    person_tel,
+    // person_gender,
+    // person_birthday,
+    person_password,
+    person_confirmPassword,
+    person_location,
+    person_bio,
+  } = props
   const errors = {}
 
   // STATUS
@@ -115,3 +97,5 @@ export default function personValidatorSchema({
   // console.log('ERRORS', errors)
   return errors
 }
+
+export default personValidatorSchema

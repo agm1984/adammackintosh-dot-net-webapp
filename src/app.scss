@@ -34,6 +34,12 @@ body {
   padding: 0;
 }
 
+// @media screen and (max-width: 1024px) {
+//   body {
+//     width: 100%;
+//   }
+// }
+
 #root {
   background-color: $adam-app-bg;
   width: 100%;

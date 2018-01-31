@@ -15,7 +15,6 @@ const handleGetPersonAvatar = () => async (dispatch) => {
       query: GET_ME_QUERY,
     })
     const { me } = res.data
-    console.log('ME', me)
     if (!me.person_avatar) {
       return dispatch({
         type: NAV_GET_AVATAR,

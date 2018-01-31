@@ -41,11 +41,17 @@ class StartMenu extends Component {
   }
 
   render() {
+    const windowWidth = document.getElementById('root').offsetWidth
+    let mobileMode = false
+    if (windowWidth < 1024) {
+      mobileMode = true
+    }
     const { programs, onOpenProgram } = this.props
     const windowsUpdates = {
       icon: require('./icons/start-windowsUpdates.png'),
       label: 'Windows Update',
       altText: 'Windows Updates',
+      linkTo: '',
       isDisabled: true,
     }
     const menu = {
@@ -53,36 +59,46 @@ class StartMenu extends Component {
         icon: require('./icons/start-favourites.png'),
         label: 'Favourites',
         altText: 'Favourites',
+        linkTo: '',
         isDisabled: true,
+        omitForMobile: true,
       },
       documents: {
         icon: require('./icons/start-documents.png'),
         label: 'Documents',
         altText: 'Documents',
+        linkTo: '',
         isDisabled: true,
+        omitForMobile: true,
       },
       settings: {
         icon: require('./icons/start-settings.png'),
         label: 'Settings',
         altText: 'Settings',
+        linkTo: '',
         isDisabled: true,
+        omitForMobile: true,
       },
       find: {
         icon: require('./icons/start-find.png'),
         label: 'Find',
         altText: 'Find',
+        linkTo: '',
         isDisabled: true,
+        omitForMobile: true,
       },
       help: {
         icon: require('./icons/start-help.png'),
         label: 'Help',
         altText: 'Help',
+        linkTo: '',
         isDisabled: true,
       },
       run: {
         icon: require('./icons/start-run.png'),
         label: 'Run',
         altText: 'Run',
+        linkTo: '',
         isDisabled: true,
         hasDivider: true,
       },
@@ -90,12 +106,14 @@ class StartMenu extends Component {
         icon: require('./icons/start-admin.png'),
         label: 'Admin Area',
         altText: 'Admin Area',
+        linkTo: '/admin/signin',
         isDisabled: false,
       },
       shutDown: {
         icon: require('./icons/start-shutDown.png'),
         label: 'Shut Down...',
         altText: 'Shut Down',
+        linkTo: '',
         isDisabled: true,
       },
     }
@@ -136,6 +154,9 @@ class StartMenu extends Component {
             </li>
           ))}
           {Object.keys(menu).map((item) => {
+            if ((menu[item].omitForMobile === true) && mobileMode === true) {
+              return null
+            }
             if (menu[item].hasDivider === true) {
               return [
                 <li
@@ -158,7 +179,7 @@ class StartMenu extends Component {
             }
             return (
               <NavLink
-                to="/admin"
+                to={menu[item].linkTo}
                 style={{ textDecoration: 'none' }}
                 key={`${item}_row`}
               >

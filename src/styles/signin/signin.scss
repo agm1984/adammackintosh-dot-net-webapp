@@ -30,6 +30,12 @@
   box-shadow: 0 $border-xxs $border-xxs $adam-app-border;
 }
 
+@media screen and (max-width: 1024px) {
+  #auth_form {
+    width: 100%;
+  }
+}
+
 .auth_done {
   font-size: 1.6rem;
 }

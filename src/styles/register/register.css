@@ -39,6 +39,10 @@
   border-radius: 0.4rem 0.4rem 0.4rem 0.4rem;
   box-shadow: 0 0.1rem 0.1rem #e5e5e5; }
 
+@media screen and (max-width: 1024px) {
+  .reg_form {
+    width: 100%; } }
+
 #register_logo-container {
   display: flex;
   flex-direction: column;
