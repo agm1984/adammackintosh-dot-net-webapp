@@ -17,7 +17,7 @@ const handleGetPersonAvatar = () => async (dispatch) => {
     const { me } = res.data
     if (!me.person_avatar) {
       return dispatch({
-        type: NAV_GET_AVATAR,
+        type: NAV_GET_AVATAR_FAIL,
         payload: noPhoto,
       })
     }
@@ -25,11 +25,28 @@ const handleGetPersonAvatar = () => async (dispatch) => {
       type: NAV_GET_AVATAR,
       payload: me.person_avatar,
     })
-  } catch (e) {
-    return dispatch({
-      type: NAV_GET_AVATAR_FAIL,
-      payload: noPhoto,
-    })
+  } catch (firstError) {
+    try {
+      const res = await client.query({
+        query: GET_ME_QUERY,
+      })
+      const { me } = res.data
+      if (!me.person_avatar) {
+        return dispatch({
+          type: NAV_GET_AVATAR_FAIL,
+          payload: noPhoto,
+        })
+      }
+      return dispatch({
+        type: NAV_GET_AVATAR,
+        payload: me.person_avatar,
+      })
+    } catch (secondError) {
+      return dispatch({
+        type: NAV_GET_AVATAR_FAIL,
+        payload: noPhoto,
+      })
+    }
   }
 }
 

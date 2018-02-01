@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { reduxForm, Field } from 'redux-form'
 import AuthErrors from './AuthErrors'
 import logo from './adam-logo.png'
+import infoIcon from '../images/info.png'
 import AuthInput from './AuthInput'
 import validate from './auth_validator'
 
@@ -48,6 +49,31 @@ const AuthForm = (props) => {
         >
           SIGN IN
         </button>
+      </div>
+      <div
+        id="auth_heading"
+        style={{
+          position: 'relative',
+          marginBottom: 0,
+          backgroundColor: 'rgba(210, 227, 243, 0.5)',
+          border: '1px solid #88ABC7',
+          color: 'black',
+        }}
+      >
+        <img
+          style={{
+            position: 'absolute',
+            height: '30px',
+            width: '30px',
+            top: '7px',
+            left: '10px',
+            opacity: 0.75,
+          }}
+          src={infoIcon}
+          alt="Info"
+        />
+        To skip registration, sign in with credentials:<br />
+        E: <b>demo@demo.com</b> / P: <b>demodemo</b>
       </div>
     </form>
   )

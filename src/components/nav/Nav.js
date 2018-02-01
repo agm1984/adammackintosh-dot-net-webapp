@@ -11,10 +11,18 @@ class NavContainer extends Component {
   /**
    * When the Nav Container loads, the currently signed in user's profile
    * picture should be acquired from the server.
-   * TODO: Handle case where user updates their profile picture.
    */
   componentDidMount() {
-    this.props.handleGetPersonAvatar()
+    return this.props.handleGetPersonAvatar()
+  }
+
+  /**
+   * To handle the case when a user updates his/her profile picture while
+   * signed in, the profile picture is acquired every page reload.
+   * This is moderately wasteful and could be cleaned up further.
+   */
+  componentWillUpdate() {
+    return this.props.handleGetPersonAvatar()
   }
 
   /**

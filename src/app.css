@@ -2548,7 +2548,6 @@ button.list_subnav_link:active {
 .list_pagination-pages {
   display: flex;
   flex-direction: row;
-  margin-right: 0.8rem;
   flex: 1; }
 
 .list_pagination button {

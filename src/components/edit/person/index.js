@@ -56,10 +56,14 @@ class PersonEditContainer extends Component {
   async handleEditSubmit(updatedProps) {
     try {
       const { record } = this.state
+      console.log('RECORD', record)
+      console.log('UPDATED', updatedProps)
       const updates = compareObjectStates(record, updatedProps)
+      const { person_password } = updatedProps
       await this.props.mutate({
         variables: {
           ...updates,
+          person_password,
           person_serialNumber: record.person_serialNumber,
         },
         refetchQueries: [{ query: GET_ALL_PEOPLE_QUERY }],
