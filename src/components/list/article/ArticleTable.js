@@ -51,7 +51,7 @@ const ArticleTable = (props) => {
             accessor: 'article_tags',
             Cell: (cellProps) => {
               const { _original } = cellProps.row
-              if (_original.article_tags === undefined) {
+              if (!_original.article_tags) {
                 return null
               }
               return (
@@ -67,6 +67,9 @@ const ArticleTable = (props) => {
             accessor: 'article_author',
             Cell: (cellProps) => {
               const { _original } = cellProps.row
+              if (!_original.article_author) {
+                return null
+              }
               return (
                 <NavLink
                   className="table_link-clickable"

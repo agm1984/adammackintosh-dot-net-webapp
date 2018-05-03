@@ -35,6 +35,7 @@
 .edit_subnav-title {
   font-size: $font-xl;
   line-height: $font-xl;
+  letter-spacing: 0.1em;
   text-align: left; }
 
 .edit_subnav-right-side {
@@ -63,10 +64,11 @@
 
 .edit_heading {
   display: flex;
-  align-items: center;
+  justify-content: center;
   font-size: $font-heading;
   line-height: $font-heading;
   font-weight: $fw-heading;
+  letter-spacing: 0.2em;
   color: $adam-red; }
 
 .edit_rowcontainer {
@@ -90,6 +92,7 @@
   font-size: $font-xl;
   line-height: $font-xl;
   text-align: right;
+  letter-spacing: 0.2em;
   color: #b3b3b3; }
 
 .edit_row-item {
@@ -228,7 +231,8 @@
   font-size: $font-xl;
   line-height: $font-xl;
   font-weight: $fw-heading;
-  color: $adam-red; }
+  color: $adam-primary-lightred;
+  }
 
 .edit_required {
   margin-left: 33rem;
@@ -238,7 +242,8 @@
   font-style: italic;
   font-size: $font-md;
   line-height: $font-xl;
-  color: $adam-red; }
+  color: $adam-primary-errordark;
+  }
 
 .normal {
   box-sizing: border-box;
@@ -254,14 +259,15 @@
 .error {
   box-sizing: border-box;
   background: transparent;
-  border-top: $border-xxs solid $adam-red;
-  border-bottom: $border-xxs solid $adam-red;
-  border-left: $border-xxs solid $adam-red;
-  border-right: $border-xxs solid $adam-red;
+  border: $border-xxs solid $adam-primary-errordark;
   //border-radius: 0.1rem 0.1rem 0.1rem 0.1rem;
   outline: 0;
-  color: $adam-red;
+  color: $adam-primary-errordark;
   background-color: $adam-input-error; }
+
+.error::placeholder {
+  color: $adam-primary-errordark;
+}
 
 // CREATE & EDIT FORM                               BUTTONS
 // ########################################################
@@ -290,6 +296,7 @@
   display: inline-block;
   font-size: $font-xl;
   line-height: $font-xl;
+  letter-spacing: 0.1em;
   font-weight: $fw-heading; }
 
 .edit_button-red {
@@ -307,4 +314,5 @@
   display: inline-block;
   font-size: $font-xl;
   line-height: $font-xl;
+  letter-spacing: 0.1em;
   font-weight: $fw-heading; }

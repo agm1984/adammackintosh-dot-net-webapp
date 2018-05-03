@@ -44,20 +44,21 @@
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 700;
-  color: #dd0426; }
+  color: #45A29E; }
 
 a.list_subnav_link:link {
-  color: #dd0426;
-  text-decoration: none; }
+  color: #45A29E;
+  text-decoration: none;
+  letter-spacing: 0.1em; }
 
 a.list_subnav_link:visited {
-  color: #dd0426; }
+  color: #45A29E; }
 
 a.list_subnav_link:hover {
   color: #000; }
 
 a.list_subnav_link:active {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_subnav_menu-spacer {
   margin-left: 1.6rem;
@@ -82,16 +83,17 @@ button.list_subnav_link {
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 700;
-  color: #dd0426; }
+  letter-spacing: 0.1em;
+  color: #45A29E; }
 
 button.list_subnav_link:visited {
-  color: #dd0426; }
+  color: #45A29E; }
 
 button.list_subnav_link:hover {
   color: #000; }
 
 button.list_subnav_link:active {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_search {
   display: flex;
@@ -181,17 +183,17 @@ button.list_subnav_link:active {
   border: none; }
 
 .list_pagination button:hover {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_pagination button:active {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_pagination-active button {
   font-weight: 700;
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_pagination-active button:hover {
-  color: #dd0426;
+  color: #45A29E;
   cursor: default; }
 
 .list_pagination-inactive button {
@@ -239,7 +241,7 @@ button.list_subnav_link:active {
 
 .list_results-sorted {
   font-weight: 700;
-  color: #dd0426; }
+  color: #45A29E; }
 
 a.list_result-link:link {
   font-weight: 400;
@@ -247,7 +249,7 @@ a.list_result-link:link {
   text-decoration: none; }
 
 a.list_result-link:hover {
-  color: #dd0426; }
+  color: #45A29E; }
 
 a.list_result-link:visited {
   color: #1A1A1A; }
@@ -259,16 +261,16 @@ a.list_result-link:active {
   text-decoration: none; }
 
 .table_link-clickable:link {
-  color: #000; }
+  color: #45A29E; }
 
 .table_link-clickable:visited {
-  color: #000; }
+  color: #45A29E; }
 
 .table_link-clickable:hover {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .table_link-clickable:active {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_results-actions {
   outline: none;
@@ -330,7 +332,7 @@ a.list_result-link:active {
   color: #1A1A1A; }
 
 .list_results-actions-menu a:hover {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .list_results-actions-menu a:active {
-  color: #dd0426; }
+  color: #45A29E; }

@@ -28,7 +28,7 @@
 // }
 
 .ReactTable * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 .ReactTable .rt-table {
@@ -53,6 +53,7 @@
   border: $border-xxs solid $adam-app-border;
   border-collapse: collapse;
   color: $adam-exp-grey;
+  background: white;
 }
 
 .ReactTable .rt-thead {

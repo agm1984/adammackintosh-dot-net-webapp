@@ -16,16 +16,17 @@
 .auth_error-container {
   width: 100%;
   padding: 1.6rem;
-  border-top: 0.1rem solid #dd0426;
-  border-bottom: 0.1rem solid #dd0426;
-  border-left: 0.1rem solid #dd0426;
-  border-right: 0.1rem solid #dd0426;
+  border: 0.1rem solid #A11A23;
   border-radius: 0.1rem 0.1rem 0.1rem 0.1rem;
   box-sizing: border-box;
   font-size: 1.2rem;
   line-height: 1.2rem;
-  color: #dd0426;
+  color: #45A29E;
   background-color: #f8dee0; }
 
 .auth_error-header {
+  color: #A11A23;
   font-weight: 700; }
+
+.auth_error-container li {
+  color: #A11A23; }

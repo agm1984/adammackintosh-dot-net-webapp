@@ -86,14 +86,14 @@
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 400;
-  color: #dd0426;
+  color: #45A29E;
   text-decoration: none; }
 
 a.register_register-link:hover {
   color: #1A1A1A; }
 
 a.register_register:active {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .row-md {
   display: flex;
@@ -109,4 +109,4 @@ a.register_register:active {
   font-style: italic;
   font-size: 1.2rem;
   line-height: 1.4rem;
-  color: #dd0426; }
+  color: #45A29E; }

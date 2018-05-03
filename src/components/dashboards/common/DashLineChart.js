@@ -50,33 +50,33 @@ const AdamLineChart = (props) => {
           <Legend />
           <Line
             type="monotone"
-            dataKey="users"
-            fill="#dd0426"
-            stroke="#dd0426"
+            dataKey="people"
+            fill="#FF5043"
+            stroke="#FF5043"
             strokeWidth={4}
             activeDot={{ r: 8 }}
           />
           <Line
             type="monotone"
-            dataKey="businesses"
-            fill="#3f88c5"
-            stroke="#3f88c5"
+            dataKey="articles"
+            fill="#45A29E"
+            stroke="#45A29E"
             strokeWidth={4}
             activeDot={{ r: 8 }}
           />
           <Line
             type="monotone"
-            dataKey="sponsorships"
-            fill="#3d9720"
-            stroke="#3d9720"
+            dataKey="affiliates"
+            fill="#03DF69"
+            stroke="#03DF69"
             strokeWidth={4}
             activeDot={{ r: 8 }}
           />
           <Line
             type="monotone"
-            dataKey="things"
-            fill="#f0a202"
-            stroke="#f0a202"
+            dataKey="tags"
+            fill="#4D4D81"
+            stroke="#4D4D81"
             strokeWidth={4}
             activeDot={{ r: 8 }}
           />

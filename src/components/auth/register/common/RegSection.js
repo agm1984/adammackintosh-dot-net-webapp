@@ -14,7 +14,7 @@ const RegSection = (props) => {
         />
       </div>
       <div id="reg_heading">
-        Mackintosh Portfolio Registration
+        Registration
       </div>
       <div className="edit_heading">
         {heading}

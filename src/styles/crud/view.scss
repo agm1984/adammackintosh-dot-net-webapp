@@ -60,6 +60,8 @@ button.subnav_deactivate:active {
   line-height: 2rem;
   font-weight: 600;
   color: $adam-red;
+  text-align: center;
+  letter-spacing: 0.2em;
 }
 
 .view_row {
@@ -80,6 +82,7 @@ button.subnav_deactivate:active {
   text-align: right;
   color: $adam-sub-heading;
   text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
 
 .view_row-item {
@@ -118,6 +121,7 @@ a.view_link:active {
 }
 
 #view_avatar-photo {
+  margin-top: 3.2rem;
   margin-bottom: 1.6rem;
   height: 12.8rem;
   width: 12.8rem;

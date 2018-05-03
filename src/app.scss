@@ -35,12 +35,6 @@ body {
   padding: 0;
 }
 
-// @media screen and (max-width: 1024px) {
-//   body {
-//     width: 100%;
-//   }
-// }
-
 #root {
   background-color: $adam-app-bg;
   width: 100%;
@@ -76,7 +70,7 @@ a {
   flex: 0;
   align-items: center;
   box-sizing: border-box;
-  border-bottom: $xs solid $adam-red;
+  // border-bottom: $xs solid $adam-red;
   text-align: center;
   color: $adam-sub-heading;
   user-select: none;

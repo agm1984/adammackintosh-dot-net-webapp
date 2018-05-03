@@ -45,6 +45,7 @@
 a.list_subnav_link:link {
   color: $adam-red;
   text-decoration: none;
+  letter-spacing: 0.1em;
 }
 a.list_subnav_link:visited {
   color: $adam-red;
@@ -79,6 +80,7 @@ button.list_subnav_link {
   font-size: $font-xl;
   line-height: $font-xl;
   font-weight: $fw-heading;
+  letter-spacing: 0.1em;
   color: $adam-red;
 }
 
@@ -292,10 +294,11 @@ a.list_result-link:active {
   text-decoration: none;
 }
 .table_link-clickable:link {
-  color: $adam-black;
+  color: $adam-primary-darkteal;
+  // font-weight: bold;
 }
 .table_link-clickable:visited {
-  color: $adam-black;
+  color: $adam-primary-darkteal;
 }
 .table_link-clickable:hover {
   color: $adam-red;

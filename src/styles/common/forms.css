@@ -43,6 +43,7 @@
 .edit_subnav-title {
   font-size: 1.4rem;
   line-height: 1.4rem;
+  letter-spacing: 0.1em;
   text-align: left; }
 
 .edit_subnav-right-side {
@@ -54,7 +55,7 @@
 
 .edit_subnav-right-side span {
   padding-right: 0.4rem;
-  color: #dd0426; }
+  color: #45A29E; }
 
 .edit_container {
   flex: 1;
@@ -68,11 +69,12 @@
 
 .edit_heading {
   display: flex;
-  align-items: center;
+  justify-content: center;
   font-size: 2rem;
   line-height: 2rem;
   font-weight: 700;
-  color: #dd0426; }
+  letter-spacing: 0.2em;
+  color: #45A29E; }
 
 .edit_rowcontainer {
   display: flex;
@@ -94,6 +96,7 @@
   font-size: 1.4rem;
   line-height: 1.4rem;
   text-align: right;
+  letter-spacing: 0.2em;
   color: #b3b3b3; }
 
 .edit_row-item {
@@ -119,7 +122,7 @@
   height: 16rem; }
 
 .error::placeholder {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .edit_select {
   width: 100%;
@@ -201,7 +204,7 @@
   font-size: 1.4rem;
   line-height: 1.4rem;
   font-weight: 700;
-  color: #dd0426; }
+  color: #FF5043; }
 
 .edit_required {
   margin-left: 33rem;
@@ -211,7 +214,7 @@
   font-style: italic;
   font-size: 1.2rem;
   line-height: 1.4rem;
-  color: #dd0426; }
+  color: #A11A23; }
 
 .normal {
   box-sizing: border-box;
@@ -227,13 +230,13 @@
 .error {
   box-sizing: border-box;
   background: transparent;
-  border-top: 0.1rem solid #dd0426;
-  border-bottom: 0.1rem solid #dd0426;
-  border-left: 0.1rem solid #dd0426;
-  border-right: 0.1rem solid #dd0426;
+  border: 0.1rem solid #A11A23;
   outline: 0;
-  color: #dd0426;
+  color: #A11A23;
   background-color: #f8dee0; }
+
+.error::placeholder {
+  color: #A11A23; }
 
 .edit_button-container {
   display: flex;
@@ -259,6 +262,7 @@
   display: inline-block;
   font-size: 1.4rem;
   line-height: 1.4rem;
+  letter-spacing: 0.1em;
   font-weight: 700; }
 
 .edit_button-red {
@@ -267,7 +271,7 @@
   padding-top: 1.6rem;
   padding-bottom: 1.6rem;
   box-sizing: border-box;
-  background-color: #dd0426;
+  background-color: #45A29E;
   border: none;
   color: #fff;
   border-radius: 0.1rem 0.1rem 0.1rem 0.1rem;
@@ -276,4 +280,5 @@
   display: inline-block;
   font-size: 1.4rem;
   line-height: 1.4rem;
+  letter-spacing: 0.1em;
   font-weight: 700; }

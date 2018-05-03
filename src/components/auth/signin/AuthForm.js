@@ -25,8 +25,7 @@ const AuthForm = (props) => {
         />
       </div>
       <div id="auth_heading">
-        Sign in to the Mackintosh Portfolio Admin Area
-        <br />with your <strong>email</strong> and <strong>password</strong>
+        Sign in
       </div>
       <AuthErrors errors={maybeShowErrors} />
       <Field

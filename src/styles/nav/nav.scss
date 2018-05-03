@@ -76,6 +76,7 @@ $nav-spacer-margin: $md;
 a.nav_link:link {
   font-weight: $fw-heading;
   color: $adam-heading;
+  letter-spacing: 0.3em;
   text-decoration: none; }
 a.nav_link:visited {
   color: $adam-heading; }

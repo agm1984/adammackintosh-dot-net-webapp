@@ -56,9 +56,9 @@ const AdamBarChart = (props) => {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="GC Pressure" stackId="a" fill="#f0a202" />
-          <Bar dataKey="Memory Usage" stackId="a" fill="#3f88c5" />
-          <Bar dataKey="Memory Available" stackId="a" fill="#3d9720" />
+          <Bar dataKey="GC Pressure" stackId="a" fill="#FF5043" />
+          <Bar dataKey="Memory Usage" stackId="a" fill="#45A29E" />
+          <Bar dataKey="CPU Usage" stackId="a" fill="#03DF69" />
         </BarChart>
       </div>
     </div>

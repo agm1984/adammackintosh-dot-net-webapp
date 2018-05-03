@@ -15,7 +15,7 @@ const RegServerErrors = (props) => {
   return (
     <div className="auth_error-container" style={style}>
       <div className="auth_error-header">
-        THE FOLLOWING ERRORS OCCURRED:
+        TRY AGAIN
       </div>
       <ul>
         {errors.map(e => <li key={e}>{e}</li>)}

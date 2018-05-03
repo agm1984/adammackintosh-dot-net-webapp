@@ -11,18 +11,18 @@ const Dashboard = () => {
   // LineChart should be made more dynamic when real data is made available
   const rand = () => Math.floor(Math.random() * 1000) + 501
   const serverData = [ /* eslint-disable object-curly-newline */
-    { name: 'Jan', users: rand(), businesses: rand(), sponsorships: rand(), things: rand() },
-    { name: 'Feb', users: rand() * 2, businesses: rand() * 2, sponsorships: rand() * 2, things: rand() * 2 },
-    { name: 'Mar', users: rand() * 4, businesses: rand() * 4, sponsorships: rand() * 4, things: rand() * 4 },
-    { name: 'Apr', users: rand() * 6, businesses: rand() * 6, sponsorships: rand() * 6, things: rand() * 6 },
-    { name: 'May', users: rand() * 8, businesses: rand() * 8, sponsorships: rand() * 8, things: rand() * 8 },
-    { name: 'Jun', users: rand() * 10, businesses: rand() * 10, sponsorships: rand() * 10, things: rand() * 10 },
-    { name: 'Jul', users: rand() * 12, businesses: rand() * 12, sponsorships: rand() * 12, things: rand() * 12 },
-    { name: 'Aug', users: rand() * 14, businesses: rand() * 14, sponsorships: rand() * 14, things: rand() * 14 },
-    { name: 'Sep', users: rand() * 16, businesses: rand() * 16, sponsorships: rand() * 16, things: rand() * 16 },
-    { name: 'Oct', users: rand() * 18, businesses: rand() * 18, sponsorships: rand() * 18, things: rand() * 18 },
-    { name: 'Nov', users: rand() * 20, businesses: rand() * 20, sponsorships: rand() * 20, things: rand() * 20 },
-    { name: 'Dec', users: rand() * 32, businesses: rand() * 32, sponsorships: rand() * 32, things: rand() * 32 },
+    { name: 'Jan', people: rand(), articles: rand(), affiliates: rand(), tags: rand() },
+    { name: 'Feb', people: rand() * 2, articles: rand() * 2, affiliates: rand() * 2, tags: rand() * 2 },
+    { name: 'Mar', people: rand() * 4, articles: rand() * 4, affiliates: rand() * 4, tags: rand() * 4 },
+    { name: 'Apr', people: rand() * 6, articles: rand() * 6, affiliates: rand() * 6, tags: rand() * 6 },
+    { name: 'May', people: rand() * 8, articles: rand() * 8, affiliates: rand() * 8, tags: rand() * 8 },
+    { name: 'Jun', people: rand() * 10, articles: rand() * 10, affiliates: rand() * 10, tags: rand() * 10 },
+    { name: 'Jul', people: rand() * 12, articles: rand() * 12, affiliates: rand() * 12, tags: rand() * 12 },
+    { name: 'Aug', people: rand() * 14, articles: rand() * 14, affiliates: rand() * 14, tags: rand() * 14 },
+    { name: 'Sep', people: rand() * 16, articles: rand() * 16, affiliates: rand() * 16, tags: rand() * 16 },
+    { name: 'Oct', people: rand() * 18, articles: rand() * 18, affiliates: rand() * 18, tags: rand() * 18 },
+    { name: 'Nov', people: rand() * 20, articles: rand() * 20, affiliates: rand() * 20, tags: rand() * 20 },
+    { name: 'Dec', people: rand() * 32, articles: rand() * 32, affiliates: rand() * 32, tags: rand() * 32 },
   ] /* eslint-enable object-curly-newline */
   return (
     <DashView>
@@ -32,24 +32,24 @@ const Dashboard = () => {
           heading="Progress-to-Date"
           serverData={serverData}
         />
-        <DashLeft heading="Users" color="red" isTop>
+        <DashLeft heading="Views" color="blue" isTop>
           <DashRow label="Past Week" value="108 New" />
-          <DashRow label="This Month" value="488 New" />
-          <DashRow label="This Year" value="4,888 New" />
+          <DashRow label="This Month" value="645 New" />
+          <DashRow label="This Year" value="3,968 New" />
           <DashRow label="Total" value="68,984" emphasis />
         </DashLeft>
-        <DashRight heading="Businesses" color="blue" isTop>
+        <DashRight heading="Articles" color="blue" isTop>
           <DashRow label="Approval Required" value="12 Pending" withLinkTo="/admin/people" />
           <DashRow label="Past Week" value="18 New" />
           <DashRow label="This Month" value="18 New" />
           <DashRow label="Past Week" value="58 New" />
           <DashRow label="This Year" value="1,868 New" emphasis />
         </DashRight>
-        <DashLeft heading="Sponsorships" color="green">
+        <DashLeft heading="People" color="blue">
           <DashRow label="Business Sponsors" value="500 in Total" />
           <DashRow label="Person Sponsors" value="20,000 in Total" />
         </DashLeft>
-        <DashRight heading="Industries & Categories" color="orange">
+        <DashRight heading="Industries & Categories" color="blue">
           <DashRow label="Industries Supported" value="20 in Total" />
           <DashRow label="Categories Supported" value="60 in Total" />
         </DashRight>

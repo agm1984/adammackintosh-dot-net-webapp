@@ -4,8 +4,8 @@
 
 $adam-black: #000;
 $adam-white: #fff;
-$adam-red: #dd0426;
-$adam-blue: #3f88c5;
+$adam-red: #45A29E;
+$adam-blue: #45A29E;
 $adam-green: #3d9720;
 $adam-orange: #f0a202;
 $adam-purple: #140f2d;
@@ -23,3 +23,32 @@ $adam-buttons: #999999;
 $adam-exp-grey: #808080;
 
 // need to collect RGB colors (ie: on listview)
+
+// TONES
+$adam-primary-darkblack: #000;
+$adam-primary-lightblack: #212121;
+$adam-primary-darkgray: #383838;
+$adam-primary-lightgray: #CCCCCC;
+$adam-primary-white: #fff;
+// TRANSPARENT TONES
+$adam-transparent-lightblack: rgba(25, 25, 25, 0.9);
+$adam-transparent-darkgray: rgba(51, 51, 51, 0.8);
+$adam-transparent-lightgray: rgba(204, 204, 204, 0.2);
+// COLOURS
+$adam-primary-lightbrown: #8B4513;
+$adam-primary-darkred: #A11A23;
+$adam-primary-lightred: #FF5043;
+$adam-primary-darkorange: #DA8D01;
+$adam-primary-lightyellow: #F7C53E;
+$adam-primary-darkyellow: #A59C59;
+$adam-primary-darkgreen: #014420;
+$adam-primary-lightgreen: #03DF69;
+$adam-primary-darkerteal: #004040;
+$adam-primary-darkteal: #45A29E;
+$adam-primary-lightteal: #66FCF1;
+$adam-primary-darkblue: #152837;
+$adam-primary-sapphireblue: #010A67;
+$adam-primary-lightpurple: #4D4D81;
+// ERRORS
+$adam-primary-errordark: #A11A23;
+$adam-primary-errorlight: #eabea9;

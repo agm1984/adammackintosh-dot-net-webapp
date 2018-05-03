@@ -15,7 +15,7 @@ const DashErrors = (props) => {
   return (
     <div className="auth_error-container" style={{ marginTop: '3.2rem' }}>
       <div className="auth_error-header">
-        THE FOLLOWING ERRORS OCCURRED:
+        TRY AGAIN
       </div>
       <ul>
         {errors.map(e => <li key={e}>{e}</li>)}

@@ -8,10 +8,7 @@
 .auth_error-container {
   width: 100%;
   padding: $md;
-  border-top: $border-xxs solid $adam-red;
-  border-bottom: $border-xxs solid $adam-red;
-  border-left: $border-xxs solid $adam-red;
-  border-right: $border-xxs solid $adam-red;
+  border: $border-xxs solid $adam-primary-errordark;
   border-radius: $border-xxs $border-xxs $border-xxs $border-xxs;
   box-sizing: border-box;
   font-size: $font-md;
@@ -20,4 +17,9 @@
   background-color: $adam-input-error; }
 
 .auth_error-header {
+  color: $adam-primary-errordark;
   font-weight: $fw-heading; }
+
+.auth_error-container li {
+  color: $adam-primary-errordark;
+}

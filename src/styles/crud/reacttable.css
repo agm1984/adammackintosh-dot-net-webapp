@@ -48,7 +48,8 @@
   box-shadow: 0 0.1rem 0.1rem #e5e5e5;
   border: 0.1rem solid #e5e5e5;
   border-collapse: collapse;
-  color: #808080; }
+  color: #808080;
+  background: white; }
 
 .ReactTable .rt-thead {
   -webkit-box-flex: 1;
@@ -101,11 +102,11 @@
 
 .ReactTable .rt-thead .rt-th.-sort-asc,
 .ReactTable .rt-thead .rt-td.-sort-asc {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .ReactTable .rt-thead .rt-th.-sort-desc,
 .ReactTable .rt-thead .rt-td.-sort-desc {
-  color: #dd0426; }
+  color: #45A29E; }
 
 .ReactTable .rt-thead .rt-th.-sort-asc:after,
 .ReactTable .rt-thead .rt-td.-sort-asc:after {
@@ -116,7 +117,7 @@
   margin-left: 0.4rem;
   border-left: 0.4rem solid transparent;
   border-right: 0.4rem solid transparent;
-  border-bottom: 0.8rem solid #dd0426; }
+  border-bottom: 0.8rem solid #45A29E; }
 
 .ReactTable .rt-thead .rt-th.-sort-desc:after,
 .ReactTable .rt-thead .rt-td.-sort-desc:after {
@@ -127,7 +128,7 @@
   margin-left: 0.4rem;
   border-left: 0.4rem solid transparent;
   border-right: 0.4rem solid transparent;
-  border-top: 0.8rem solid #dd0426; }
+  border-top: 0.8rem solid #45A29E; }
 
 .ReactTable .rt-thead .rt-th.-cursor-pointer,
 .ReactTable .rt-thead .rt-td.-cursor-pointer {
